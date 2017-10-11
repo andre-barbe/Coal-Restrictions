@@ -1,0 +1,90 @@
+file gtapPARM = tr.prm;
+Verbal Description =
+Emissions reduction with trading among Annex I;
+Method = Gragg;
+Steps = 2 4 6;
+automatic accuracy = yes;
+accuracy figures = 4;
+accuracy percent = 80;
+minimum subinterval length =  1.0E-0003;
+minimum subinterval fails = stop;
+accuracy criterion = Data;
+subintervals = 2;
+! basic closure
+exogenous
+    afall
+    afcom
+    afreg
+    afsec    
+    ams
+    aoall
+    aoreg
+    aosec
+  ! atall               omitted
+    atd
+    atf
+    atm
+    ats
+    au
+    cgdslack
+    del_ctgshr
+    dpgov
+    dppriv
+    dpsave
+    endwslack
+    incomeslack
+    pemp
+    pfactwld
+    pop
+    profitslack
+    psaveslack
+    qo(ENDW_COMM,REG)
+    RCTAXB
+  ! tf                  omitted
+    tfd
+    tfm
+    tgd
+    tgm
+    tm
+    tms
+    to
+    tpd
+    tpm
+    tp
+    tradslack
+    tx
+    txs
+    ;
+Rest Endogenous ;    
+!    DBALCAR (incl. permit trading)  exogenous for all regions except one,
+!    and cgdslack exogenous for that one region (which can be any one).
+
+swap cgdslack = DBALCAR;
+swap DBALCAR("ROW") = cgdslack("ROW");
+
+swap RCTAXB = NCTAXB;
+swap pempb("EMITR")= NCTAXB("EMITR");
+swap gco2q("USA") = pemp("USA");
+swap gco2q("EU27") = pemp("EU27");
+swap gco2q("JPN") = pemp("JPN");
+swap gco2q("RoA1") = pemp("RoA1");
+swap gco2q("EEFSU") = pemp("EEFSU");
+
+!   shocks
+shock gco2q("USA") = -17;
+shock gco2q("EU27") = -17;
+shock gco2q("JPN") = -30;
+shock gco2q("RoA1") = -40;
+shock gco2q("EEFSU") = 9;
+
+
+!@ contents of CMFStart when this EXP file was last saved
+!@ below is a record only....not read by RunGTAP
+!@ RunGTAP reads from the actual CMFSTART file
+!@ ! This is the default CMFSTART file which RunGTAP uses when
+!@ ! a version has no CMFSTART file of its own
+!@ iz1 = no ;
+!@ NDS = yes; ! no displays
+!@ Extrapolation accuracy file = YES ;
+!@ CPU = yes;
+!@ end of CMFSTART part

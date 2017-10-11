@@ -1,0 +1,1032 @@
+#FILES
+Logical Name         In/Out Ud  Type Actual Name
+GTAPSETS              In     n  HAR
+ file with set specification
+GTAPSOL               In     n  HAR
+ file containing all solution variables
+GTAPBASE              In     n  HAR
+ file containing all base data
+GTAPUPDATE            In     n  HAR
+ file containing all updated base data
+WELVIEW               Out    n  HAR
+ file containing welfare decompositions
+(Display)             Out    n  DIS
+(Solution)            Out    n  SL4
+(Equations)           Out    n  EQ4
+#TABFILE
+decomp27.tab
+#TMDATE
+at 14:15:40 on 22-OCT-2003
+#STIFILE
+TABmate.sif
+#SETS
+   21
+    1 REG             -1  u Regions in the model
+    2 TRAD_COMM       -1  u Traded commodities
+    3 MARG_COMM       -1  u margin commodities
+    4 NMRG_COMM       -1  u non-margin commodities
+    5 CGDS_COMM       -1  u Capital goods commodities
+    6 ENDW_COMM       -1  u Endowment commodities
+    7 ENDWC_COMM       1  k Capital Endowment Commodity
+capital     
+    8 PROD_COMM       -1  u PRODUCED COMMODITIES
+    9 DEMD_COMM       -1  u DEMANDED COMMODITIES
+   10 NSAV_COMM       -1  u NON-SAVINGS COMMODITIES
+   11 ctax             7  k
+pfacttax    
+prodtax     
+inputtax    
+contax      
+govtax      
+xtax        
+mtax        
+   12 type             2  k
+xtax        
+mtax        
+   13 column           8  k
+co2trd      
+alloc_A1    
+endw_B1     
+tech_C1     
+pop_D1      
+tot_E1      
+IS_F1       
+pref_G1     
+   14 techtype         6  k
+output      
+primfac     
+v_added     
+ininput     
+transp      
+import      
+   15 prices           3  k
+pworld      
+pexport     
+pimport     
+   16 dir              2  k
+imported    
+domestic    
+   17 activity         3  k
+firm        
+private     
+govt        
+   18 col              4  k
+welcnt      
+dvol        
+taxrateb    
+taxrateu    
+   19 direc            2  k
+import      
+export      
+   20 form             2  k
+percent     
+value       
+   21 colm             3  k
+ISbal       
+p_cgds      
+p_save      
+#VARIABLES
+         0
+#VCSTAT
+
+#VCTP
+
+#SUBSETS
+    11
+     1     3     2
+     2     4     2
+     3     2     8
+     4     5     8
+     5     6     9
+     6     2     9
+     7     9    10
+     8     5    10
+     9     8    10
+    10     7    10
+    11    12    11
+#COEFFICIENTS
+  138
+    1 BEVOA           2 r y n  value of output at agent's prices
+    6    1
+    2 BEVFA           3 r y n  producer expenditure on i by industry j
+    6    8    1
+    3 BVIFA           3 r y n  purchases of imported i r for use in j in region r
+    2    8    1
+    4 BVDFA           3 r y n  purchases of domestic i r for use in j in region r
+    2    8    1
+    5 BVOA            2 r n n  value of commodity i output in region r
+   10    1
+    6 cntco2trd       1 r y n  contribution to regional EV of carbon trading
+    1
+    7 cntalleffr      1 r y n  total contribution to regional EV of allocative effects
+    1
+    8 cntendwr        1 r y n  contribution to regional EV of changes in all ENDW_COMM
+    1
+    9 cnttechr        1 r y n  contribution to regional EV of all technical change
+    1
+   10 cntpopr         1 r y n  contribution to regional EV of all technical change
+    1
+   11 cnttotr         1 r y n  contribution to regional EV of changes in its terms of trade
+    1
+   12 cntcgdsr        1 r y n  contribution to regional EV of changes in the price of cgds
+    1
+   13 cntdpar         1 r y n  contribution to regional EV of changes in preferences
+    1
+   14 welfare         2 r n n  aggregate report of welfare change
+    1   13
+   15 cntalleffir     2 r y n  total contribution to regional EV of allocative effects of i in r
+    9    1
+   16 cntalltrad      2 r n n  transpose of cntalleffir(i,r)
+    1    9
+   17 BVDPM           2 r y n  private household expenditure on domestic i in r
+    2    1
+   18 BVDGM           2 r y n  government household expenditure on domestic i in r
+    2    1
+   19 BVDFM           3 r y n  purchases of domestic i r for use in j in region r
+    2    8    1
+   20 UVDPM           2 r y n  private household expenditure on domestic i in r
+    2    1
+   21 UVDGM           2 r y n  government household expenditure on domestic i in r
+    2    1
+   22 UVDFM           3 r y n  purchases of domestic i r for use in j in region r
+    2    8    1
+   23 UVIFA           3 r y n  purchases of imported i r for use in j in region r
+    2    8    1
+   24 UVDFA           3 r y n  purchases of domestic i r for use in j in region r
+    2    8    1
+   25 BVXMD           3 r y n  exports of i from r to s at market prices (tradeables only)
+    2    1    1
+   26 UVXMD           3 r y n  exports of i from r to s at market prices (tradeables only)
+    2    1    1
+   27 cntqor          1 r y n  contribution to WEV of changes in output of all NSAV_COMM from r
+    1
+   28 cntqfer         1 r y n  contribution to WEV of changes in use of all ENDW_COMM in all j in r
+    1
+   29 cntqfmr         1 r y n  contribution to WEV of changes in use of imported int. in all j in r
+    1
+   30 cntqfdr         1 r y n  contribution to WEV of changes in use of domestic int. in all j in r
+    1
+   31 cntallir        1 r n n
+    1
+   32 cntqpmr         1 r y n  contribution to WEV of changes in consumption of imported goods in r
+    1
+   33 cntqpdr         1 r y n  contribution to WEV of changes in consumption of domestic goods in r
+    1
+   34 cntallpr        1 r n n
+    1
+   35 cntqgmr         1 r y n  contribution to WEV of changes in gov't consumption of imports in r
+    1
+   36 cntqgdr         1 r y n  contrib. to WEV of changes in gov't consumption of domestics in r
+    1
+   37 cntallgr        1 r n n
+    1
+   38 cntqxsr         1 r y n  cont. to WEV of changes in exports of all goods from SRCE r to all DEST
+    1
+   39 cntqimr         1 r y n  cont. to WEV of changes in imports of all goods from all SRCE to DEST r
+    1
+   40 cntalleffkr     2 r n n
+    1   11
+   41 cntqoir         2 r y n  contribution to WEV of changes in output of NSAV_COMM i in r
+   10    1
+   42 otax            2 r n n
+   10    1
+   43 BVFM            3 r y n  producer expenditure on i by j in r at market prices
+    6    8    1
+   44 BVDM            2 r n n  domestic sales of i in r at market prices (tradeables only)
+    2    1
+   45 BVST            2 r y n  exports of m from r for int'l transport at mkt prices (tradeables only)
+    3    1
+   46 BVOM            2 r n n  value of commodity i output in region r at mkt prices
+   10    1
+   47 qo              2 r y n  industry output of commodity i in region r
+   10    1
+   48 boutax          2 r n n
+   10    1
+   49 UVFM            3 r y n  producer expenditure on i by j in r at market prices
+    6    8    1
+   50 UVDM            2 r n n  domestic sales of i in r at market prices (tradeables only)
+    2    1
+   51 UVST            2 r y n  exports of m from r for int'l transport at mkt prices (tradeables only)
+    3    1
+   52 UEVOA           2 r y n  value of output at agent's prices
+    6    1
+   53 UEVFA           3 r y n  producer expenditure on i by industry j
+    6    8    1
+   54 UVOA            2 r n n  value of commodity i output in region r
+   10    1
+   55 UVOM            2 r n n  value of commodity i output in region r at mkt prices
+   10    1
+   56 uoutax          2 r n n
+   10    1
+   57 output          3 r n n
+   10    1   18
+   58 cntqfmir        2 r y n  contribution to WEV of changes in use of imported int. i in all j in r
+    2    1
+   59 cntqpmir        2 r y n  contribution to WEV of changes in consumption of imported good i in r
+    2    1
+   60 cntqgmir        2 r y n  contribution to WEV of changes in gov't consumption of import i in r
+    2    1
+   61 cntqfdir        2 r y n  contribution to WEV of changes in use of domestic i in all j in r
+    2    1
+   62 cntqpdir        2 r y n  contribution to WEV of changes in consumption of domestic good i in r
+    2    1
+   63 cntqgdir        2 r y n  contribution to WEV of changes in gov't consumption of domestic i in r
+    2    1
+   64 atax            4 r n n
+    2   17    1   16
+   65 BVIPM           2 r y n  private household expenditure on i in r
+    2    1
+   66 qpm             2 r y n  private hhld demand for imports of i in region r
+    2    1
+   67 qpd             2 r y n  private hhld demand for domestic i in region r
+    2    1
+   68 BVIPA           2 r y n  private household expenditure on imported i
+    2    1
+   69 UVIPA           2 r y n  private household expenditure on imported i
+    2    1
+   70 UVIPM           2 r y n  private household expenditure on i in r
+    2    1
+   71 BVDPA           2 r y n  private household expenditure on domestic i in r
+    2    1
+   72 UVDPA           2 r y n  private household expenditure on domestic i in r
+    2    1
+   73 private         4 r n n
+    2    1   16   18
+   74 BVIGM           2 r y n  gov't household expenditure on i in r
+    2    1
+   75 qgm             2 r y n  government hhld demand for imports of i in region r
+    2    1
+   76 qgd             2 r y n  government hhld demand for domestic i in region r
+    2    1
+   77 BVIGA           2 r y n  government household expenditure on imported i
+    2    1
+   78 UVIGA           2 r y n  government household expenditure on imported i
+    2    1
+   79 UVIGM           2 r y n  gov't household expenditure on i in r
+    2    1
+   80 BVDGA           2 r y n  government household expenditure on domestic i in r
+    2    1
+   81 UVDGA           2 r y n  government household expenditure on domestic i in r
+    2    1
+   82 govt            4 r n n
+    2    1   16   18
+   83 cntqfmijr       3 r y n  contribution to WEV of changes in use of improted int. i in j of r
+    2    8    1
+   84 cntqfdijr       3 r y n  contribution to WEV of changes in use of domestic int. i in j of r
+    2    8    1
+   85 stax            4 r n n
+    2    8    1   16
+   86 BVIFM           3 r y n  purchases of imports i for use in j in region r
+    2    8    1
+   87 qfm             3 r y n  industry demands for aggregate imports
+    2    8    1
+   88 qfd             3 r y n  industry demands for domestic goods
+    2    8    1
+   89 UVIFM           3 r y n  purchases of imports i for use in j in region r
+    2    8    1
+   90 firm            5 r n n
+    2    8    1   16   18
+   91 cntqxsirs       3 r y n  contrib. to WEV of changes in exports of i from SRCE r to DEST s
+    2    1    1
+   92 cntqimisr       3 r y n  contrib. to WEV of changes in imports of i from SRCE s to DEST r
+    2    1    1
+   93 ttax            4 r n n
+    2    1    1   12
+   94 BVIMS           3 r y n  imports of i from r to s at domestic market prices
+    2    1    1
+   95 BVIWS           3 r y n  imports of i from r to s valued cif (tradeables only)
+    2    1    1
+   96 bimtax          3 r n n
+    2    1    1
+   97 BVXWD           3 r y n  exports of i from r to s valued fob (tradeables only)
+    2    1    1
+   98 bextax          3 r n n
+    2    1    1
+   99 UVIMS           3 r y n  imports of i from r to s at domestic market prices
+    2    1    1
+  100 UVIWS           3 r y n  imports of i from r to s valued cif (tradeables only)
+    2    1    1
+  101 uimtax          3 r n n
+    2    1    1
+  102 UVXWD           3 r y n  exports of i from r to s valued fob (tradeables only)
+    2    1    1
+  103 uextax          3 r n n
+    2    1    1
+  104 qxs             3 r y n  export sales of commodity i from r to region s
+    2    1    1
+  105 trade           5 r n n
+    2    1    1   18   19
+  106 cntqfeir        2 r y n  contribution to WEV of changes in use of all ENDW_COMM i in r
+    6    1
+  107 cntqfeijr       3 r y n  contribution to WEV of changes in use of all ENDW_COMM i in j of r
+    6    8    1
+  108 bendtax         3 r n n
+    6    8    1
+  109 uendtax         3 r n n
+    6    8    1
+  110 qfe             3 r y n  industry demands for endowment commodities
+    6    8    1
+  111 pfactor         4 r n n
+    6    8    1   18
+  112 cntendwir       2 r y n  contribution to regional EV of changes in ENDW_COMM i
+    6    1
+  113 cntendw         2 r n n  contribution to welfare by endw_comm i in region r
+    1    6
+  114 cntkbr          1 r y n  contribution to regional EV of depreciation
+    1
+  115 cnttech_aor     1 r y n  contribution to regional EV of output augmenting technical change
+    1
+  116 cnttech_afer    1 r y n  contribution to regional EV of primary factor augmenting tech change
+    1
+  117 cnttech_avar    1 r y n  contribution to regional EV of value added augmenting tech change
+    1
+  118 cnttech_afr     1 r y n  cont. to regional EV of comp. int. input augmenting tech change
+    1
+  119 cnttech_atrr    1 r y n  contribution to regional EV of technical change in transportation
+    1
+  120 cnttech_amsr    1 r y n  contribution to regional EV of import-augmenting technical change
+    1
+  121 cnttech         2 r n n  contribution to welfare change by tech
+    1   14
+  122 CNTtech_aoir    2 r y n
+    8    1
+  123 Ctech_afeijr    3 r y n
+    6    8    1
+  124 Ctech_avajr     2 r y n
+    8    1
+  125 Ctech_afijr     3 r y n
+    2    8    1
+  126 Ctech_mirs      4 r y n
+    3    2    1    1
+  127 Ctech_amsirs    3 r y n
+    2    1    1
+  128 c1_ir           2 r y n  contribution of world price, px_i, to ToT
+    2    1
+  129 c2_ir           2 r y n  contribution of regional export price, px_ir, to ToT
+    2    1
+  130 c3_ir           2 r y n  contribution of regional import price, pm_ir, to ToT
+    2    1
+  131 tot             4 r n n  terms trade effects decomposed by effects of different prices.
+    2    1   15   20
+  132 BSAVE           1 r y n  expenditure on NET savings in region r at agent's prices
+    1
+  133 BVDEP           1 r y n  value of capital depeciation in r (exogenous)
+    1
+  134 NETINV          1 r n n  regional NET investment in region r
+    1
+  135 ISBAL           1 r n n  I-S Balance, NETINV(r) - SAVE(r)
+    1
+  136 pcgds           1 r y n  price of investment goods = ps("cgds",r)
+    1
+  137 psave           1 r y n  price of savings in region r
+    1
+  138 CGDSCOMP        2 r n n  components of cgds effect
+    1   21
+#EQUATIONS
+    0
+#READS
+  102
+    1     1 BEVOA             3 GTAPBASE             EVOA a h     2
+     6     1
+    2     2 BEVFA             3 GTAPBASE             EVFA a h     3
+     6     8     1
+    3     3 BVIFA             3 GTAPBASE             VIFA a h     3
+     2     8     1
+    4     4 BVDFA             3 GTAPBASE             VDFA a h     3
+     2     8     1
+    5     6 cntco2trd         2 GTAPSOL              COTR a h     1
+     1
+    6     7 cntalleffr        2 GTAPSOL              ALLR a h     1
+     1
+    7     8 cntendwr          2 GTAPSOL              ENDR a h     1
+     1
+    8     9 cnttechr          2 GTAPSOL              TECR a h     1
+     1
+    9    10 cntpopr           2 GTAPSOL              POPR a h     1
+     1
+   10    11 cnttotr           2 GTAPSOL              TOTR a h     1
+     1
+   11    12 cntcgdsr          2 GTAPSOL              CGDS a h     1
+     1
+   12    13 cntdpar           2 GTAPSOL              DPAR a h     1
+     1
+   13    15 cntalleffir       2 GTAPSOL              AEFI a h     2
+     9     1
+   14    17 BVDPM             3 GTAPBASE             VDPM a h     2
+     2     1
+   15    18 BVDGM             3 GTAPBASE             VDGM a h     2
+     2     1
+   16    19 BVDFM             3 GTAPBASE             VDFM a h     3
+     2     8     1
+   17    20 UVDPM             4 GTAPUPDATE           VDPM a h     2
+     2     1
+   18    21 UVDGM             4 GTAPUPDATE           VDGM a h     2
+     2     1
+   19    22 UVDFM             4 GTAPUPDATE           VDFM a h     3
+     2     8     1
+   20    23 UVIFA             4 GTAPUPDATE           VIFA a h     3
+     2     8     1
+   21    24 UVDFA             4 GTAPUPDATE           VDFA a h     3
+     2     8     1
+   22    25 BVXMD             3 GTAPBASE             VXMD a h     3
+     2     1     1
+   23    26 UVXMD             4 GTAPUPDATE           VXMD a h     3
+     2     1     1
+   24    27 cntqor            2 GTAPSOL              QOR  a h     1
+     1
+   25    28 cntqfer           2 GTAPSOL              QFER a h     1
+     1
+   26    29 cntqfmr           2 GTAPSOL              QFMR a h     1
+     1
+   27    30 cntqfdr           2 GTAPSOL              QFDR a h     1
+     1
+   28    32 cntqpmr           2 GTAPSOL              QPMR a h     1
+     1
+   29    33 cntqpdr           2 GTAPSOL              QPDR a h     1
+     1
+   30    35 cntqgmr           2 GTAPSOL              QGMR a h     1
+     1
+   31    36 cntqgdr           2 GTAPSOL              QGDR a h     1
+     1
+   32    38 cntqxsr           2 GTAPSOL              QXSR a h     1
+     1
+   33    39 cntqimr           2 GTAPSOL              QIMR a h     1
+     1
+   34    41 cntqoir           2 GTAPSOL              QOIR a h     2
+    10     1
+   35    43 BVFM              3 GTAPBASE             VFM  a h     3
+     6     8     1
+   36    45 BVST              3 GTAPBASE             VST  a h     2
+     3     1
+   37    47 qo                2 GTAPSOL              qo   a h     2
+    10     1
+   38    49 UVFM              4 GTAPUPDATE           VFM  a h     3
+     6     8     1
+   39    51 UVST              4 GTAPUPDATE           VST  a h     2
+     3     1
+   40    52 UEVOA             4 GTAPUPDATE           EVOA a h     2
+     6     1
+   41    53 UEVFA             4 GTAPUPDATE           EVFA a h     3
+     6     8     1
+   42    58 cntqfmir          2 GTAPSOL              QFMI a h     2
+     2     1
+   43    59 cntqpmir          2 GTAPSOL              QPMI a h     2
+     2     1
+   44    60 cntqgmir          2 GTAPSOL              QGMI a h     2
+     2     1
+   45    61 cntqfdir          2 GTAPSOL              QFDI a h     2
+     2     1
+   46    62 cntqpdir          2 GTAPSOL              QPDI a h     2
+     2     1
+   47    63 cntqgdir          2 GTAPSOL              QGDI a h     2
+     2     1
+   48    65 BVIPM             3 GTAPBASE             VIPM a h     2
+     2     1
+   49    66 qpm               2 GTAPSOL              qpm  a h     2
+     2     1
+   50    67 qpd               2 GTAPSOL              qpd  a h     2
+     2     1
+   51    68 BVIPA             3 GTAPBASE             VIPA a h     2
+     2     1
+   52    69 UVIPA             4 GTAPUPDATE           VIPA a h     2
+     2     1
+   53    70 UVIPM             4 GTAPUPDATE           VIPM a h     2
+     2     1
+   54    71 BVDPA             3 GTAPBASE             VDPA a h     2
+     2     1
+   55    72 UVDPA             4 GTAPUPDATE           VDPA a h     2
+     2     1
+   56    74 BVIGM             3 GTAPBASE             VIGM a h     2
+     2     1
+   57    75 qgm               2 GTAPSOL              qgm  a h     2
+     2     1
+   58    76 qgd               2 GTAPSOL              qgd  a h     2
+     2     1
+   59    77 BVIGA             3 GTAPBASE             VIGA a h     2
+     2     1
+   60    78 UVIGA             4 GTAPUPDATE           VIGA a h     2
+     2     1
+   61    79 UVIGM             4 GTAPUPDATE           VIGM a h     2
+     2     1
+   62    80 BVDGA             3 GTAPBASE             VDGA a h     2
+     2     1
+   63    81 UVDGA             4 GTAPUPDATE           VDGA a h     2
+     2     1
+   64    83 cntqfmijr         2 GTAPSOL              QFMJ a h     3
+     2     8     1
+   65    84 cntqfdijr         2 GTAPSOL              QFDJ a h     3
+     2     8     1
+   66    86 BVIFM             3 GTAPBASE             VIFM a h     3
+     2     8     1
+   67    87 qfm               2 GTAPSOL              qfm  a h     3
+     2     8     1
+   68    88 qfd               2 GTAPSOL              qfd  a h     3
+     2     8     1
+   69    89 UVIFM             4 GTAPUPDATE           VIFM a h     3
+     2     8     1
+   70    91 cntqxsirs         2 GTAPSOL              QXSS a h     3
+     2     1     1
+   71    92 cntqimisr         2 GTAPSOL              QIMS a h     3
+     2     1     1
+   72    94 BVIMS             3 GTAPBASE             VIMS a h     3
+     2     1     1
+   73    95 BVIWS             3 GTAPBASE             VIWS a h     3
+     2     1     1
+   74    97 BVXWD             3 GTAPBASE             VXWD a h     3
+     2     1     1
+   75    99 UVIMS             4 GTAPUPDATE           VIMS a h     3
+     2     1     1
+   76   100 UVIWS             4 GTAPUPDATE           VIWS a h     3
+     2     1     1
+   77   102 UVXWD             4 GTAPUPDATE           VXWD a h     3
+     2     1     1
+   78   104 qxs               2 GTAPSOL              qxs  a h     3
+     2     1     1
+   79   106 cntqfeir          2 GTAPSOL              QEIR a h     2
+     6     1
+   80   107 cntqfeijr         2 GTAPSOL              EIJR a h     3
+     6     8     1
+   81   110 qfe               2 GTAPSOL              qfe  a h     3
+     6     8     1
+   82   112 cntendwir         2 GTAPSOL              ENDI a h     2
+     6     1
+   83   114 cntkbr            2 GTAPSOL              CKBR a h     1
+     1
+   84   115 cnttech_aor       2 GTAPSOL              AOR  a h     1
+     1
+   85   116 cnttech_afer      2 GTAPSOL              AFER a h     1
+     1
+   86   117 cnttech_avar      2 GTAPSOL              AVAR a h     1
+     1
+   87   118 cnttech_afr       2 GTAPSOL              AFR  a h     1
+     1
+   88   119 cnttech_atrr      2 GTAPSOL              ATR  a h     1
+     1
+   89   120 cnttech_amsr      2 GTAPSOL              AMSR a h     1
+     1
+   90   122 CNTtech_aoir      2 GTAPSOL              AOIR a h     2
+     8     1
+   91   123 Ctech_afeijr      2 GTAPSOL              FEIJ a h     3
+     6     8     1
+   92   124 Ctech_avajr       2 GTAPSOL              AVJR a h     2
+     8     1
+   93   125 Ctech_afijr       2 GTAPSOL              AFIJ a h     3
+     2     8     1
+   94   126 Ctech_mirs        2 GTAPSOL              MIRS a h     4
+     3     2     1     1
+   95   127 Ctech_amsirs      2 GTAPSOL              AMIR a h     3
+     2     1     1
+   96   128 c1_ir             2 GTAPSOL              C1IR a h     2
+     2     1
+   97   129 c2_ir             2 GTAPSOL              C2IR a h     2
+     2     1
+   98   130 c3_ir             2 GTAPSOL              C3IR a h     2
+     2     1
+   99   132 BSAVE             3 GTAPBASE             SAVE a h     1
+     1
+  100   133 BVDEP             3 GTAPBASE             VDEP a h     1
+     1
+  101   136 pcgds             2 GTAPSOL              pcgd a h     1
+     1
+  102   137 psave             2 GTAPSOL              psav a h     1
+     1
+#READ(EXTRA)
+    5
+    1 el
+ REG          GTAPSETS             H1  
+    2 el
+ TRAD_COMM    GTAPSETS             H2  
+    3 el
+ MARG_COMM    GTAPSETS             MARG
+    4 el
+ CGDS_COMM    GTAPSETS             H9  
+    5 el
+ ENDW_COMM    GTAPSETS             H6  
+#NCVARIABLES
+    0
+#STATEMENTS
+      70   1 fl                                                 71  45    0
+      72   1 fl                                                 73  55    0
+      74   1 fl                                                 75  47    0
+      76   1 fl                                                 77  57    0
+      78   1 fl                                                 79  55    0
+      88   1 st REG                                             90  65    0
+      91   1 st TRAD_COMM                                       93  65    0
+      94   1 st MARG_COMM                                       96  67    0
+      97   1 ss                                                 98  37    0
+      99   1 st NMRG_COMM                                      100  65    0
+      99   1 ss                                                100  65    0
+     101   1 st CGDS_COMM                                      103  65    0
+     104   1 st ENDW_COMM                                      106  65    0
+     107   1 st ENDWC_COMM                                     108  57    0
+     109   1 st PROD_COMM                                      110  68    0
+     109   1 ss                                                110  68    0
+     109   1 ss                                                110  68    0
+     111   1 st DEMD_COMM                                      112  67    0
+     111   1 ss                                                112  67    0
+     111   1 ss                                                112  67    0
+     113   1 st NSAV_COMM                                      114  70    0
+     113   1 ss                                                114  70    0
+     113   1 ss                                                114  70    0
+     115   1 ss                                                116  37    0
+     117   1 ss                                                118  38    0
+     126   1 st ctax                                           126  60    0
+     127   1 st type                                           127  20    0
+     128   1 ss                                                128  30    0
+     129   1 st column                                         129  72    0
+     130   1 st techtype                                       130  60    0
+     131   1 st prices                                         131  35    0
+     132   1 st dir                                            132  27    0
+     133   1 st activity                                       133  34    0
+     134   1 st col                                            134  42    0
+     135   1 st direc                                          135  25    0
+     136   1 st form                                           136  24    0
+     137   1 st colm                                           137  30    0
+     149   1 cs BEVOA                                          150  53    0
+     151   1 rd BEVOA                a                         152  43    0
+     153   1 cs BEVFA                                          154  61    0
+     155   1 rd BEVFA                a                         156  43    0
+     157   1 cs BVIFA                                          158  72    0
+     159   1 rd BVIFA                a                         160  43    0
+     161   1 cs BVDFA                                          162  72    0
+     163   1 rd BVDFA                a                         164  43    0
+     166   1 cs BVOA                                           167  58    0
+     168   1 fm                                                169  27    0
+     170   1 fm                                                174   9    0
+     187   1 cs cntco2trd                                      189  54    0
+     190   1 rd cntco2trd            a                         191  46    0
+     193   1 cs cntalleffr                                     195  64    0
+     196   1 rd cntalleffr           a                         197  47    0
+     199   1 cs cntendwr                                       201  64    0
+     202   1 rd cntendwr             a                         203  45    0
+     205   1 cs cnttechr                                       207  60    0
+     208   1 rd cnttechr             a                         209  45    0
+     211   1 cs cntpopr                                        213  60    0
+     214   1 rd cntpopr              a                         215  44    0
+     217   1 cs cnttotr                                        219  69    0
+     220   1 rd cnttotr              a                         221  44    0
+     223   1 cs cntcgdsr                                       225  68    0
+     226   1 rd cntcgdsr             a                         227  45    0
+     229   1 cs cntdpar                                        231  62    0
+     232   1 rd cntdpar              a                         233  44    0
+     235   1 cs welfare                                        236  56    0
+     237   1 fm                                                238  39    0
+     239   1 fm                                                240  42    0
+     241   1 fm                                                242  39    0
+     243   1 fm                                                244  39    0
+     245   1 fm                                                246  37    0
+     247   1 fm                                                248  37    0
+     249   1 fm                                                250  37    0
+     251   1 fm                                                252  38    0
+     254   1 wr welfare              a                         256  41    0
+     267   1 cs cntalleffir                                    269  74    0
+     270   1 rd cntalleffir          a                         271  48    0
+     273   1 cs cntalltrad                                     274  54    0
+     275   1 fm                                                276  39    0
+     278   1 wr cntalltrad           a                         280  46    0
+     300   1 cs BVDPM                                          301  68    0
+     302   1 rd BVDPM                a                         303  43    0
+     304   1 cs BVDGM                                          305  71    0
+     306   1 rd BVDGM                a                         307  43    0
+     308   1 cs BVDFM                                          309  72    0
+     310   1 rd BVDFM                a                         311  43    0
+     312   1 cs UVDPM                                          313  68    0
+     314   1 rd UVDPM                a                         315  45    0
+     316   1 cs UVDGM                                          317  71    0
+     318   1 rd UVDGM                a                         319  45    0
+     320   1 cs UVDFM                                          321  72    0
+     322   1 rd UVDFM                a                         323  45    0
+     324   1 cs UVIFA                                          325  72    0
+     326   1 rd UVIFA                a                         327  45    0
+     328   1 cs UVDFA                                          329  72    0
+     330   1 rd UVDFA                a                         331  45    0
+     332   1 cs BVXMD                                          333  80    0
+     334   1 rd BVXMD                a                         335  43    0
+     336   1 cs UVXMD                                          337  80    0
+     338   1 rd UVXMD                a                         339  45    0
+     347   1 cs cntqor                                         349  73    0
+     350   1 rd cntqor               a                         351  42    0
+     353   1 cs cntqfer                                        355  77    0
+     356   1 rd cntqfer              a                         357  44    0
+     359   1 cs cntqfmr                                        361  77    0
+     362   1 rd cntqfmr              a                         363  44    0
+     364   1 cs cntqfdr                                        366  77    0
+     367   1 rd cntqfdr              a                         368  44    0
+     369   1 cs cntallir                                       370  16    0
+     371   1 fm                                                372  42    0
+     374   1 cs cntqpmr                                        376  77    0
+     377   1 rd cntqpmr              a                         378  44    0
+     379   1 cs cntqpdr                                        381  77    0
+     382   1 rd cntqpdr              a                         383  44    0
+     384   1 cs cntallpr                                       385  16    0
+     386   1 fm                                                387  42    0
+     389   1 cs cntqgmr                                        391  76    0
+     392   1 rd cntqgmr              a                         393  44    0
+     394   1 cs cntqgdr                                        396  74    0
+     397   1 rd cntqgdr              a                         398  44    0
+     399   1 cs cntallgr                                       400  16    0
+     401   1 fm                                                402  42    0
+     404   1 cs cntqxsr                                        406  80    0
+     407   1 rd cntqxsr              a                         408  44    0
+     410   1 cs cntqimr                                        412  80    0
+     413   1 rd cntqimr              a                         414  44    0
+     416   1 cs cntalleffkr                                    417  21    0
+     418   1 fm                                                419  43    0
+     420   1 fm                                                421  41    0
+     422   1 fm                                                423  44    0
+     424   1 fm                                                425  42    0
+     426   1 fm                                                427  42    0
+     428   1 fm                                                429  39    0
+     430   1 fm                                                431  39    0
+     433   1 wr cntalleffkr          a                         435  58    0
+     448   1 cs cntqoir                                        450  69    0
+     451   1 rd cntqoir              a                         452  44    0
+     454   1 cs otax                                           455  14    0
+     456   1 fm                                                457  29    0
+     459   1 wr otax                 a                         461  41    0
+     468   1 cs BVFM                                           469  73    0
+     470   1 rd BVFM                 a                         471  41    0
+     473   1 cs BVDM                                           474  78    0
+     475   1 fm                                                479   9    0
+     481   1 cs BVST                                           483  79    0
+     484   1 rd BVST                 a                         485  41    0
+     487   1 cs BVOM                                           488  72    0
+     489   1 fm                                                490  46    0
+     491   1 fm                                                492  65    0
+     493   1 fm                                                494  53    0
+     495   1 fm                                                496  26    0
+     498   1 cs qo                                             499  59    0
+     500   1 rd qo                   a                         501  37    0
+     504   1 zd                                                504  40    0
+     506   1 cs boutax                                         507  16    0
+     508   1 fm                                                509  58    0
+     511   1 zd                                                511  34    0
+     513   1 cs UVFM                                           514  73    0
+     515   1 rd UVFM                 a                         516  43    0
+     518   1 cs UVDM                                           519  78    0
+     520   1 fm                                                524   9    0
+     526   1 cs UVST                                           528  79    0
+     529   1 rd UVST                 a                         530  43    0
+     532   1 cs UEVOA                                          533  53    0
+     534   1 rd UEVOA                a                         535  45    0
+     537   1 cs UEVFA                                          538  61    0
+     539   1 rd UEVFA                a                         540  45    0
+     542   1 cs UVOA                                           543  58    0
+     544   1 fm                                                545  27    0
+     546   1 fm                                                550   9    0
+     552   1 cs UVOM                                           553  72    0
+     554   1 fm                                                555  46    0
+     556   1 fm                                                557  65    0
+     558   1 fm                                                559  53    0
+     560   1 fm                                                561  26    0
+     563   1 zd                                                563  40    0
+     565   1 cs uoutax                                         566  16    0
+     567   1 fm                                                568  58    0
+     570   1 zd                                                570  34    0
+     572   1 cs output                                         573  19    0
+     574   1 fm                                                575  37    0
+     576   1 fm                                                577  51    0
+     578   1 fm                                                579  41    0
+     580   1 fm                                                581  41    0
+     583   1 wr output               a                         585  68    0
+     599   1 cs cntqfmir                                       601  79    0
+     602   1 rd cntqfmir             a                         603  45    0
+     605   1 cs cntqpmir                                       607  78    0
+     608   1 rd cntqpmir             a                         609  45    0
+     611   1 cs cntqgmir                                       613  77    0
+     614   1 rd cntqgmir             a                         615  45    0
+     617   1 cs cntqfdir                                       619  74    0
+     620   1 rd cntqfdir             a                         621  45    0
+     623   1 cs cntqpdir                                       625  78    0
+     626   1 rd cntqpdir             a                         627  45    0
+     629   1 cs cntqgdir                                       631  79    0
+     632   1 rd cntqgdir             a                         633  45    0
+     635   1 cs atax                                           636  19    0
+     637   1 fm                                                638  49    0
+     639   1 fm                                                640  52    0
+     641   1 fm                                                642  49    0
+     643   1 fm                                                644  49    0
+     645   1 fm                                                646  52    0
+     647   1 fm                                                648  49    0
+     650   1 wr atax                 a                         652  43    0
+     660   1 cs BVIPM                                          661  59    0
+     662   1 rd BVIPM                a                         663  43    0
+     665   1 cs qpm                                            666  66    0
+     667   1 rd qpm                  a                         668  39    0
+     670   1 cs qpd                                            671  64    0
+     672   1 rd qpd                  a                         673  39    0
+     675   1 cs BVIPA                                          676  63    0
+     677   1 rd BVIPA                a                         678  43    0
+     680   1 cs UVIPA                                          681  63    0
+     682   1 rd UVIPA                a                         683  45    0
+     685   1 cs UVIPM                                          686  59    0
+     687   1 rd UVIPM                a                         688  45    0
+     690   1 cs BVDPA                                          691  68    0
+     692   1 rd BVDPA                a                         693  43    0
+     695   1 cs UVDPA                                          696  68    0
+     697   1 rd UVDPA                a                         698  45    0
+     701   1 zd                                                701  40    0
+     703   1 cs private                                        704  21    0
+     705   1 fm                                                706  52    0
+     707   1 fm                                                708  67    0
+     709   1 fm                                                710  67    0
+     711   1 fm                                                714   9    0
+     715   1 fm                                                718   9    0
+     719   1 fm                                                722   9    0
+     723   1 fm                                                726   9    0
+     728   1 zd                                                728  34    0
+     730   1 wr private              a                         732  59    0
+     740   1 cs BVIGM                                          741  57    0
+     742   1 rd BVIGM                a                         743  43    0
+     745   1 cs qgm                                            746  69    0
+     747   1 rd qgm                  a                         748  39    0
+     750   1 cs qgd                                            751  67    0
+     752   1 rd qgd                  a                         753  39    0
+     755   1 cs BVIGA                                          756  66    0
+     757   1 rd BVIGA                a                         758  43    0
+     760   1 cs UVIGA                                          761  66    0
+     762   1 rd UVIGA                a                         763  45    0
+     765   1 cs UVIGM                                          766  57    0
+     767   1 rd UVIGM                a                         768  45    0
+     770   1 cs BVDGA                                          771  71    0
+     772   1 rd BVDGA                a                         773  43    0
+     775   1 cs UVDGA                                          776  71    0
+     777   1 rd UVDGA                a                         778  45    0
+     781   1 zd                                                781  40    0
+     783   1 cs govt                                           784  19    0
+     785   1 fm                                                786  46    0
+     787   1 fm                                                788  65    0
+     789   1 fm                                                790  65    0
+     791   1 fm                                                794   9    0
+     795   1 fm                                                798   9    0
+     799   1 fm                                                802   9    0
+     803   1 fm                                                806   9    0
+     808   1 zd                                                808  34    0
+     810   1 wr govt                 a                         812  57    0
+     825   1 cs cntqfmijr                                      827  75    0
+     828   1 rd cntqfmijr            a                         829  46    0
+     831   1 cs cntqfdijr                                      833  75    0
+     834   1 rd cntqfdijr            a                         835  46    0
+     837   1 cs stax                                           838  19    0
+     839   1 fm                                                840  46    0
+     841   1 fm                                                842  46    0
+     844   1 wr stax                 a                         846  45    0
+     854   1 cs BVIFM                                          855  69    0
+     856   1 rd BVIFM                a                         857  43    0
+     859   1 cs qfm                                            860  58    0
+     861   1 rd qfm                  a                         862  39    0
+     864   1 cs qfd                                            865  55    0
+     866   1 rd qfd                  a                         867  39    0
+     869   1 cs UVIFM                                          870  69    0
+     871   1 rd UVIFM                a                         872  45    0
+     875   1 zd                                                875  40    0
+     877   1 cs firm                                           879  20    0
+     880   1 fm                                                881  43    0
+     882   1 fm                                                883  71    0
+     884   1 fm                                                885  71    0
+     886   1 fm                                                889   9    0
+     890   1 fm                                                893   9    0
+     894   1 fm                                                897   9    0
+     898   1 fm                                                901   9    0
+     903   1 zd                                                903  34    0
+     905   1 wr firm                 a                         907  56    0
+     920   1 cs cntqxsirs                                      922  73    0
+     923   1 rd cntqxsirs            a                         924  46    0
+     926   1 cs cntqimisr                                      928  73    0
+     929   1 rd cntqimisr            a                         930  46    0
+     932   1 cs ttax                                           933  18    0
+     934   1 fm                                                935  43    0
+     936   1 fm                                                937  43    0
+     939   1 wr ttax                 a                         941  41    0
+     949   1 cs BVIMS                                          950  72    0
+     951   1 rd BVIMS                a                         952  43    0
+     954   1 cs BVIWS                                          955  76    0
+     956   1 rd BVIWS                a                         957  44    0
+     959   1 cs bimtax                                         960  18    0
+     961   1 fm                                                962  71    0
+     964   1 cs BVXWD                                          965  75    0
+     966   1 rd BVXWD                a                         967  43    0
+     969   1 cs bextax                                         970  18    0
+     971   1 fm                                                972  71    0
+     974   1 cs UVIMS                                          975  72    0
+     976   1 rd UVIMS                a                         977  45    0
+     979   1 cs UVIWS                                          980  76    0
+     981   1 rd UVIWS                a                         982  46    0
+     984   1 cs uimtax                                         985  18    0
+     986   1 fm                                                987  71    0
+     989   1 cs UVXWD                                          990  75    0
+     991   1 rd UVXWD                a                         992  45    0
+     994   1 cs uextax                                         995  18    0
+     996   1 fm                                                997  71    0
+     999   1 cs qxs                                           1000  66    0
+    1001   1 rd qxs                  a                        1002  39    0
+    1005   1 cs trade                                         1006  21    0
+    1007   1 fm                                               1008  55    0
+    1009   1 fm                                               1010  56    0
+    1011   1 fm                                               1012  67    0
+    1013   1 fm                                               1014  67    0
+    1015   1 fm                                               1016  53    0
+    1017   1 fm                                               1018  53    0
+    1019   1 fm                                               1020  53    0
+    1021   1 fm                                               1022  53    0
+    1024   1 wr trade                a                        1026  67    0
+    1035   1 cs cntqfeir                                      1037  70    0
+    1038   1 rd cntqfeir             a                        1039  45    0
+    1041   1 wr cntqfeir             a                        1042  47    0
+    1044   1 cs cntqfeijr                                     1046  75    0
+    1047   1 rd cntqfeijr            a                        1048  46    0
+    1050   1 cs bendtax                                       1050  73    0
+    1051   1 fm                                               1052  68    0
+    1054   1 cs uendtax                                       1054  73    0
+    1055   1 fm                                               1056  68    0
+    1058   1 cs qfe                                           1059  62    0
+    1060   1 rd qfe                  a                        1061  39    0
+    1063   1 cs pfactor                                       1064  23    0
+    1065   1 fm                                               1066  48    0
+    1067   1 fm                                               1068  57    0
+    1069   1 fm                                               1070  49    0
+    1071   1 fm                                               1072  49    0
+    1074   1 wr pfactor              a                        1075  71    0
+    1085   1 cs cntendwir                                     1086  77    0
+    1087   1 rd cntendwir            a                        1088  46    0
+    1090   1 cs cntendw                                       1091  72    0
+    1092   1 fm                                               1093  34    0
+    1094   1 wr cntendw              a                        1096  39    0
+    1105   1 cs cntkbr                                        1106  62    0
+    1107   1 rd cntkbr               a                        1108  43    0
+    1109   1 wr cntkbr               a                        1111  28    0
+    1128   1 cs cnttech_aor                                   1130  74    0
+    1131   1 rd cnttech_aor          a                        1132  47    0
+    1134   1 cs cnttech_afer                                  1136  77    0
+    1137   1 rd cnttech_afer         a                        1138  49    0
+    1140   1 cs cnttech_avar                                  1142  74    0
+    1143   1 rd cnttech_avar         a                        1144  49    0
+    1146   1 cs cnttech_afr                                   1148  72    0
+    1149   1 rd cnttech_afr          a                        1150  47    0
+    1152   1 cs cnttech_atrr                                  1154  74    0
+    1155   1 rd cnttech_atrr         a                        1156  48    0
+    1158   1 cs cnttech_amsr                                  1160  75    0
+    1161   1 rd cnttech_amsr         a                        1162  49    0
+    1164   1 cs cnttech                                       1165  60    0
+    1166   1 fm                                               1167  41    0
+    1168   1 fm                                               1169  43    0
+    1170   1 fm                                               1171  43    0
+    1172   1 fm                                               1173  42    0
+    1174   1 fm                                               1175  42    0
+    1176   1 fm                                               1177  42    0
+    1179   1 wr cnttech              a                        1181  39    0
+    1189   1 cs CNTtech_aoir                                  1190  22    0
+    1191   1 rd CNTtech_aoir         a                        1192  50    0
+    1193   1 wr CNTtech_aoir         a                        1195  49    0
+    1198   1 cs Ctech_afeijr                                  1199  24    0
+    1200   1 rd Ctech_afeijr         a                        1201  49    0
+    1202   1 wr Ctech_afeijr         a                        1204  58    0
+    1207   1 cs Ctech_avajr                                   1208  21    0
+    1209   1 rd Ctech_avajr          a                        1210  48    0
+    1211   1 wr Ctech_avajr          a                        1213  55    0
+    1216   1 cs Ctech_afijr                                   1217  23    0
+    1218   1 rd Ctech_afijr          a                        1219  48    0
+    1220   1 wr Ctech_afijr          a                        1222  53    0
+    1224   1 cs Ctech_mirs                                    1225  24    0
+    1226   1 rd Ctech_mirs           a                        1227  47    0
+    1228   1 wr Ctech_mirs           a                        1230  80    0
+    1232   1 cs Ctech_amsirs                                  1233  24    0
+    1234   1 rd Ctech_amsirs         a                        1235  49    0
+    1236   1 wr Ctech_amsirs         a                        1238  61    0
+    1259   1 cs c1_ir                                         1260  61    0
+    1261   1 rd c1_ir                a                        1262  42    0
+    1264   1 cs c2_ir                                         1265  72    0
+    1266   1 rd c2_ir                a                        1267  42    0
+    1269   1 cs c3_ir                                         1270  72    0
+    1271   1 rd c3_ir                a                        1272  42    0
+    1275   1 cs tot                                           1277  71    0
+    1278   1 fm                                               1279  45    0
+    1280   1 fm                                               1281  46    0
+    1282   1 fm                                               1283  48    0
+    1284   1 fm                                               1288   9    0
+    1289   1 fm                                               1293   9    0
+    1294   1 fm                                               1298   9    0
+    1300   1 wr tot                  a                        1302  41    0
+    1313   1 cs BSAVE                                         1314  74    0
+    1315   1 rd BSAVE                a                        1316  43    0
+    1318   1 cs BVDEP                                         1319  63    0
+    1320   1 rd BVDEP                a                        1321  43    0
+    1323   1 cs NETINV                                        1324  54    0
+    1325   1 fm                                               1326  55    0
+    1328   1 cs ISBAL                                         1329  49    0
+    1330   1 fm                                               1331  36    0
+    1333   1 cs pcgds                                         1334  58    0
+    1335   1 rd pcgds                a                        1336  42    0
+    1338   1 cs psave                                         1339  46    0
+    1340   1 rd psave                a                        1341  42    0
+    1343   1 cs CGDSCOMP                                      1344  48    0
+    1345   1 fm                                               1346  35    0
+    1347   1 fm                                               1348  36    0
+    1349   1 fm                                               1350  36    0
+    1351   1 wr CGDSCOMP             a                        1353  53    0
+    1351   1 en CGDSCOMP             a                        1353  53    0
+#GPVER
+   80000
+#PRVER
+    5100
+#FINAL_LEVEL

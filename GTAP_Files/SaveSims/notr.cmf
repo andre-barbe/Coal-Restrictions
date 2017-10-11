@@ -1,0 +1,94 @@
+! This Command file
+! c:\rungtap5\andreb\work\notr.cmf
+! was written by RunGTAP (Version 3.61 built 19/Oct/2013)
+! This is the default CMFSTART file which RunGTAP uses when
+! a version has no CMFSTART file of its own
+iz1 = no ;
+NDS = yes; ! no displays
+Extrapolation accuracy file = YES ;
+CPU = yes;
+!@ end of CMFSTART part
+aux files = c:\rungtap5\andreb\coal1\GTAP;
+file gtapSETS = c:\rungtap5\andreb\coal1\sets.har;
+file gtapDATA = c:\rungtap5\andreb\coal1\basedata.har;
+Updated file gtapDATA = gdata.upd;
+Solution file = c:\rungtap5\andreb\work\notr;
+file gtapPARM = c:\rungtap5\andreb\coal1\default.prm;
+Verbal Description =
+Annex I emissions reduction with no use of flexibility mechanisms;
+Method = Gragg;
+Steps = 2 4 6;
+automatic accuracy = yes;
+accuracy figures = 4;
+accuracy percent = 80;
+minimum subinterval length =  1.0E-0003;
+minimum subinterval fails = stop;
+accuracy criterion = Data;
+subintervals = 8;
+! closure with exogenous trade balances
+exogenous
+    afall
+    afcom
+    afreg
+    afsec    
+    ams
+    aoall
+    aoreg
+    aosec
+  ! atall               omitted
+    atd
+    atf
+    atm
+    ats
+    au
+    cgdslack
+    del_ctgshr
+    dpgov
+    dppriv
+    dpsave
+    endwslack
+    incomeslack
+    pemp
+    pfactwld
+    pop
+    profitslack
+    psaveslack
+    qo(ENDW_COMM,REG)
+    RCTAXB
+  ! tf                  omitted
+    tfd
+    tfm
+    tgd
+    tgm
+    tm
+    tms
+    to
+    tpd
+    tpm
+    tp
+    tradslack
+    tx
+    txs
+pf_slack
+    ;
+Rest Endogenous ;
+!    DBALCAR exogenous for all regions except one,
+!    and cgdslack exogenous for that one region (which can be any one).
+
+swap cgdslack = DBALCAR;
+swap DBALCAR("ROW") = cgdslack("ROW");
+
+swap RCTAXB = NCTAXB;
+swap pempb("USA")= NCTAXB("USA");
+swap pempb("EU27")= NCTAXB("EU27");
+swap pempb("JPN")= NCTAXB("JPN");
+swap pempb("RoA1")= NCTAXB("RoA1");
+
+swap gco2q("USA") = pemp("USA");
+swap gco2q("EU27") = pemp("EU27");
+swap gco2q("JPN") = pemp("JPN");
+swap gco2q("RoA1") = pemp("RoA1");
+shock gco2q("usa") = -17;
+shock gco2q("eu27") = -17;
+shock gco2q("jpn") = -30;
+shock gco2q("roa1") = -40;

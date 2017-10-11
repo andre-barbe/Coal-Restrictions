@@ -1,0 +1,86 @@
+ 
+ ! This file was created at 15:41:44 on 04-SEP-2012 by the program
+ !  <shocks.for 29-JUL-2009> [shocks.tab,shocks.sti]
+ ! which accesses some of the routines in the GEMPACK software release
+ !  <GEMPACK  Release 10.0-001    April 2009>
+ 
+ !     -------------------------------------------------------                
+ !    !            GEMPACK Software System Licence            !               
+ !    !  Source Code Licence for the GEMPACK Software System  !               
+ !    !                 Licence No.  GFM-0048                 !               
+ !    !          Licence for Release 11.0 of GEMPACK          !               
+ !    !           Center for Global Trade Analysis            !               
+ !    !         Department of Agricultural Economics          !               
+ !    !                   Krannert Building                   !               
+ !    !                   Purdue University                   !               
+ !     -------------------------------------------------------                
+    
+ 
+ !
+ ! Values of TPD_HAT(TRAD_COMM,REG) - an array of size 8x9
+ !---------------------------------
+ !
+ 
+ ! (Entries are written one "row" at a time - maximum of 4 per line.)
+ 
+ 
+ 8 9  real row_order;
+ 
+ ! The matrix TPD_HAT(%1,%2) with %1 in TRAD_COMM and %2 in REG. +++++++++++++
+ 
+ !%2= USA            EU27            EEFSU           JPN
+  -4.2836576      -2.0327089      -2.9932642      -4.6968722     !%1=Agr
+ !%2= RoA1           EEx             CHN             IND
+  -2.2181284     -0.81566930     -0.15164234       1.7786866
+ !%2= ROW
+  -1.3628646
+ 
+ !%2= USA            EU27            EEFSU           JPN
+  -5.5555606      -35.908863      -25.487543      -5.3639565     !%1=Coal
+ !%2= RoA1           EEx             CHN             IND
+  -20.457542      -5.1010699      -14.751105      1.53326653E-02
+ !%2= ROW
+  -10.718410
+ 
+ !%2= USA            EU27            EEFSU           JPN
+   0.0000000      -14.337083      -38.573902       0.0000000     !%1=Oil
+ !%2= RoA1           EEx             CHN             IND
+  -6.1324167      -5.0038762       0.0000000       0.0000000
+ !%2= ROW
+  -12.814127
+ 
+ !%2= USA            EU27            EEFSU           JPN
+  -2.3538263      -34.760910      -2.7135704      -19.167528     !%1=Gas
+ !%2= RoA1           EEx             CHN             IND
+  -12.444322      -2.4488811      -2.2306418       3.3840542
+ !%2= ROW
+  -19.098959
+ 
+ !%2= USA            EU27            EEFSU           JPN
+  -20.788897      -55.853855      -25.672865      -40.676971     !%1=Oil_pcts
+ !%2= RoA1           EEx             CHN             IND
+  -45.062923      -10.348130      -9.4958496      -44.161976
+ !%2= ROW
+  -40.226948
+ 
+ !%2= USA            EU27            EEFSU           JPN
+  -3.0890048      -26.302050      -6.6484561      -7.6228833     !%1=Electricity
+ !%2= RoA1           EEx             CHN             IND
+  -14.675980      -5.6521387      -6.5830355       12.820863
+ !%2= ROW
+  -9.3324108
+ 
+ !%2= USA            EU27            EEFSU           JPN
+  -5.9055786      -16.177525      -15.011440      -4.7620516     !%1=En_Int_ind
+ !%2= RoA1           EEx             CHN             IND
+  -14.855493      -6.8561063      -8.0183887      -7.9387522
+ !%2= ROW
+  -8.4840727
+ 
+ !%2= USA            EU27            EEFSU           JPN
+  -1.5680038      -8.6572752      -6.1389074      -3.1533604     !%1=Oth_ind_ser
+ !%2= RoA1           EEx             CHN             IND
+  -6.3961143      -4.1671038      -9.4082756      -1.2793680
+ !%2= ROW
+  -4.1717892
+ 

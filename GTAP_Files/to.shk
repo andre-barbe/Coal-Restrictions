@@ -1,0 +1,128 @@
+ 
+ ! This file was created at 15:41:44 on 04-SEP-2012 by the program
+ !  <shocks.for 29-JUL-2009> [shocks.tab,shocks.sti]
+ ! which accesses some of the routines in the GEMPACK software release
+ !  <GEMPACK  Release 10.0-001    April 2009>
+ 
+ !     -------------------------------------------------------                
+ !    !            GEMPACK Software System Licence            !               
+ !    !  Source Code Licence for the GEMPACK Software System  !               
+ !    !                 Licence No.  GFM-0048                 !               
+ !    !          Licence for Release 11.0 of GEMPACK          !               
+ !    !           Center for Global Trade Analysis            !               
+ !    !         Department of Agricultural Economics          !               
+ !    !                   Krannert Building                   !               
+ !    !                   Purdue University                   !               
+ !     -------------------------------------------------------                
+    
+ 
+ !
+ ! Values of TO_HAT(NSAV_COMM,REG) - an array of size 14x9
+ !--------------------------------
+ !
+ 
+ ! (Entries are written one "row" at a time - maximum of 4 per line.)
+ 
+ 
+ 14 9  real row_order;
+ 
+ ! The matrix TO_HAT(%1,%2) with %1 in NSAV_COMM and %2 in REG. ++++++++++++++
+ 
+ !%2= USA            EU27            EEFSU           JPN
+   9.0394115       7.0721397       5.9021125       10.482680     !%1=land
+ !%2= RoA1           EEx             CHN             IND
+   9.7695541       9.2338142       1.0226173       3.7568564
+ !%2= ROW
+   6.9976945
+ 
+ !%2= USA            EU27            EEFSU           JPN
+   26.954441       34.378769       22.770552       13.180506     !%1=Unsklab
+ !%2= RoA1           EEx             CHN             IND
+   34.590199       8.9679737       1.1368877       3.0766165
+ !%2= ROW
+   10.125798
+ 
+ !%2= USA            EU27            EEFSU           JPN
+   26.954441       34.891712       23.874304       13.180521     !%1=Sklab
+ !%2= RoA1           EEx             CHN             IND
+   34.282131       7.9790587       1.1368755       3.0766101
+ !%2= ROW
+   10.430495
+ 
+ !%2= USA            EU27            EEFSU           JPN
+   9.0394258       7.6508021       5.7804217       10.482696     !%1=capital
+ !%2= RoA1           EEx             CHN             IND
+   9.8653450       8.0484257       1.0226295       3.7568371
+ !%2= ROW
+   7.6097460
+ 
+ !%2= USA            EU27            EEFSU           JPN
+   9.0394182       9.7351055       5.8248992       10.482680     !%1=NatRes
+ !%2= RoA1           EEx             CHN             IND
+   9.5631237       7.7535024       1.0226173       3.7568500
+ !%2= ROW
+   6.6225157
+ 
+ !%2= USA            EU27            EEFSU           JPN
+  0.24391156     -1.10971536E-02 -0.39856684      -1.2714789     !%1=Agr
+ !%2= RoA1           EEx             CHN             IND
+ -0.20919101      0.61659783     -2.08611903E-03  -4.0222054
+ !%2= ROW
+  0.10693768
+ 
+ !%2= USA            EU27            EEFSU           JPN
+   9.5531292      -26.518934      -1.7987738      -13.271946     !%1=Coal
+ !%2= RoA1           EEx             CHN             IND
+   17.059526      0.35854524     -1.19209271E-05  0.74810982
+ !%2= ROW
+  0.20653856
+ 
+ !%2= USA            EU27            EEFSU           JPN
+   4.8121443       4.9264054      8.40475634E-02   1.9319677     !%1=Oil
+ !%2= RoA1           EEx             CHN             IND
+   2.8127570       4.4119763      5.96046812E-05  0.68471569
+ !%2= ROW
+   2.5469732
+ 
+ !%2= USA            EU27            EEFSU           JPN
+   4.0638142       5.7869582       8.1184111       1.9402609     !%1=Gas
+ !%2= RoA1           EEx             CHN             IND
+   2.3224463       5.6643009     -1.19209271E-05  0.37570554
+ !%2= ROW
+   3.0504873
+ 
+ !%2= USA            EU27            EEFSU           JPN
+   2.6572194       28.836842     -0.16406040       48.982143     !%1=Oil_pcts
+ !%2= RoA1           EEx             CHN             IND
+ -5.76878414E-02 -0.76378429       0.0000000      0.32870579
+ !%2= ROW
+   10.816472
+ 
+ !%2= USA            EU27            EEFSU           JPN
+   3.5306797       5.3516865      -5.1840277       4.8960180     !%1=Electricity
+ !%2= RoA1           EEx             CHN             IND
+   3.6970613     -0.18995611      1.33516185E-03  -6.0672803
+ !%2= ROW
+   1.8297188
+ 
+ !%2= USA            EU27            EEFSU           JPN
+  0.91902077       3.4423599      -1.1605139       1.7113870     !%1=En_Int_ind
+ !%2= RoA1           EEx             CHN             IND
+   2.9800358      0.39520866      1.37090872E-04   1.8225993
+ !%2= ROW
+   1.0795497
+ 
+ !%2= USA            EU27            EEFSU           JPN
+   2.4184408       2.0228691     -0.78636599       1.6077769     !%1=Oth_ind_ser
+ !%2= RoA1           EEx             CHN             IND
+   1.9416360      0.71469474      1.09077687E-03  0.80667734
+ !%2= ROW
+   1.7058192
+ 
+ !%2= USA            EU27            EEFSU           JPN
+   0.0000000       0.0000000       0.0000000       0.0000000     !%1=CGDS
+ !%2= RoA1           EEx             CHN             IND
+   0.0000000       0.0000000       0.0000000       0.0000000
+ !%2= ROW
+   0.0000000
+ 

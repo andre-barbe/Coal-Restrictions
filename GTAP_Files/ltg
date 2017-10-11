@@ -1,0 +1,109 @@
+#!/usr/bin/bash
+
+##  ltg
+##  ===
+
+#   GEMPACK `LTG.BAT` as a cygwin bash script; for GEMPACK release 9.0.
+#   Usage: ltg PROGRAM [STACK_SIZE]
+#   Compile and link TABLO-generated Fortran program.
+
+#   PROGRAM should be a Unix-style file name with the suffix ".for"
+#   removed.
+
+
+#   Initialize.
+#   ----------
+
+#   Define error exit function.
+eexit () {
+    if [ -f $bname.exe ]; then rm $bname.exe; fi
+    if [ -f $bname.obj ]; then rm $bname.obj; fi
+    echo "*   " $1 1>&2
+    echo "ERROR exit from ltg" 1>&2
+    exit 1
+}
+
+#   Set Fortran executable.
+lf95=${LF95:-lf95}
+
+#   Set GEMPACK directory.
+gpdir_windows=${GPDIR:-C:\\gp}
+gpdir=`cygpath -u "$gpdir_windows"`
+gpdir_mixed=`cygpath -m "$gpdir_windows"`
+
+#   Define error messages.
+err_badp3="ltg takes no third argument"
+err_bad77="LTG77 no longer supported"
+err_clean95="can't clean up fortran files"
+err_gptask="gptask run failed"
+err_nogptask="can't find gptask file"
+err_nofig="can't find Fortran configuration file"
+err_nolib="can't find GEMPACK library"
+err_nofor="can't find $1.for"
+err_noopt95="can't find options file\"opt95\""
+err_noopt2="can't find file \"opt2\""
+err_main="can't compile main program"
+err_noexe="can't find executable \"$1.exe\""
+
+#   Check and name positional parameters.
+[ -f "$1.for" ] || eexit "$err_nofor"
+bname="$1"      #basename for Fortran program
+bname_mixed=$(cygpath -m $bname)
+[ "$2" = "77" ] && eexit "$err_bad77"
+ssize=${2:-400000}      #stacksize
+[ "$3" = "77" ] && eexit "$err_bad77"
+[ -z "$3" ] || eexit "err_badp3"
+
+
+#   Write options to command files.
+#   ------------------------------
+
+#   Copy configuration file.
+lf95ltg_fig="$gpdir/lf95ltg.fig"
+[ -f "$lf95ltg_fig" ] || eexit "$err_nofig \"$lf95ltg_fig\""
+cp "$gpdir/lf95.fig" opt
+
+#   Declare include path.
+echo "-i \"$gpdir_mixed/includes\"" >>opt
+
+#   Declare library files.
+for lib in tbgdum gpa gpb modlib; do
+    libfile="$gpdir/$lib.lib"
+    libfile_mixed=`cygpath -m "$libfile"`
+    [ -f "$libfile" ] || eexit "$err_nolib \"$libfile\""
+    echo "-lib \"$libfile_mixed\"" >>opt
+done
+
+#   Specify module path.
+echo "-mod .\;\"$gpdir_mixed/modules\"" >>opt
+#   ".\;DIRX" puts output in current dir when compiling module and
+#   searches first in current dir, then DIRX when linking.
+
+#   Specify stack size.
+echo "-Stack $ssize" >>opt
+
+#   Access Windows API directly.
+echo "-ml winapi" >>opt
+
+#   Search GEMPACK directory for libraries.
+[ -n "$GPFLIB" ] && echo "-libpath \"`cygpath -m "$GPFLIB"`\"" >>opt
+
+
+#   Compile.
+#   -------
+
+gptask_exe="$gpdir/gptask.exe"
+[ -f "$gptask_exe" ] || eexit "$err_nogptask \"$gptask_exe\""
+"$gptask_exe" ltg95 "$bname_mixed" >"/dev/null" || eexit "$err_gptask"
+[ -f "opt95" ] || eexit "$err_noopt95"
+$lf95 @opt95 >"$bname.stdout" 2>"$bname.stderr"|| eexit "$err_main"
+[ -f "$bname.exe" ] || eexit "$err_noexe"
+
+
+#   Clean up.
+#   --------
+
+rm -f $bname.stdout $bname.stderr
+rm -f ${bname}_*.mod ${bname}_*.obj ${bname}__*.for
+rm opt95 opt
+exit 0

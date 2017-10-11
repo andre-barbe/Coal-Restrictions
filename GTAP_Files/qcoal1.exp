@@ -1,0 +1,105 @@
+file gtapPARM = default.prm;
+Verbal Description =
+1 pct reduction in coal usage by electricity in US;
+Method = Gragg;
+Steps = 2 4 6;
+automatic accuracy = yes;
+accuracy figures = 4;
+accuracy percent = 80;
+minimum subinterval length =  1.0E-0003;
+minimum subinterval fails = stop;
+accuracy criterion = Data;
+subintervals = 2;
+! basic closure
+exogenous
+    afall
+    afcom
+    afreg
+    afsec    
+    ams
+    aoall
+    aoreg
+    aosec
+  ! atall               omitted
+    atd
+    atf
+    atm
+    ats
+    au
+    cgdslack
+    del_ctgshr
+    dpgov
+    dppriv
+    dpsave
+    endwslack
+    incomeslack
+    pemp
+    pfactwld
+    pop
+    profitslack
+    psaveslack
+    qo(ENDW_COMM,REG)
+    RCTAXB
+  ! tf                  omitted
+    tfd
+    tfm
+    tgd
+    tgm
+    tm
+    tms
+    to
+    tpd
+    tpm
+    tp
+    tradslack
+    tx
+    txs
+    pf_slack(FIRM_COMM,PROD_COMM,NUS_REG)
+    pf_slack(NEF_COMM,NEP_COMM,US_REG)
+    pf_slack(NEF_COMM,EGY_COMM,US_REG)
+    pf_slack(EGY_COMM,NEP_COMM,US_REG)
+pf_slack("Coal","Coal",US_REG)
+pf_slack("Coal","Oil",US_REG)
+pf_slack("Coal","Gas",US_REG)
+pf_slack("Coal","Oil_pcts",US_REG)
+!pf_slack("Coal","Electricity",US_REG)
+pf_slack("Oil","Coal",US_REG)
+pf_slack("Oil","Oil",US_REG)
+pf_slack("Oil","Gas",US_REG)
+pf_slack("Oil","Oil_pcts",US_REG)
+pf_slack("Oil","Electricity",US_REG)
+pf_slack("Gas","Coal",US_REG)
+pf_slack("Gas","Oil",US_REG)
+pf_slack("Gas","Gas",US_REG)
+pf_slack("Gas","Oil_pcts",US_REG)
+pf_slack("Gas","Electricity",US_REG)
+pf_slack("Oil_pcts","Coal",US_REG)
+pf_slack("Oil_pcts","Oil",US_REG)
+pf_slack("Oil_pcts","Gas",US_REG)
+pf_slack("Oil_pcts","Oil_pcts",US_REG)
+pf_slack("Oil_pcts","Electricity",US_REG)
+pf_slack("Electricity","Coal",US_REG)
+pf_slack("Electricity","Oil",US_REG)
+pf_slack("Electricity","Gas",US_REG)
+pf_slack("Electricity","Oil_pcts",US_REG)
+pf_slack("Electricity","Electricity",US_REG)
+qf("Coal","Electricity",US_REG)
+
+
+
+
+    ;
+Rest Endogenous ;
+
+ Shock qf("Coal","Electricity","USA") = -1;
+
+!@ contents of CMFStart when this EXP file was last saved
+!@ below is a record only....not read by RunGTAP
+!@ RunGTAP reads from the actual CMFSTART file
+!@ ! This is the default CMFSTART file which RunGTAP uses when
+!@ ! a version has no CMFSTART file of its own
+!@ iz1 = no ;
+!@ NDS = yes; ! no displays
+!@ Extrapolation accuracy file = YES ;
+!@ CPU = yes;
+!@ end of CMFSTART part

@@ -1,0 +1,247 @@
+ 
+ This GEMPACK log file was created at 13:21:48 on 10-OCT-2017 by the program
+  <SLTOHT   Version 5.53  July 2013>
+ which accesses some of the routines in the GEMPACK software release
+  <GEMPACK Release 11.4.003   January 2016>
+ 
+ 
+  (Processing command line options.)
+ 
+ 
+  (Opening Stored-input file 'Control_Files\coal20.sti')
+ (Opened, as text, existing file
+ 
+  'C:\Users\andre.barbe\PycharmProjects\Coal-Restrictions\Control_Files\coal20.s
+ ti'.)
+ Taking inputs from a Stored-input file
+ 
+ 
+ <SLTOHT   Version 5.53  July 2013>
+   This program accesses some of the routines in the GEMPACK software release
+ <GEMPACK Release 11.4.003   January 2016>
+ 
+ Licence file: C:\GP\licen.gem
+ 
+     -------------------------------------------------------
+    !            GEMPACK Software System Licence            !
+    !  Source Code Licence for the GEMPACK Software System  !
+    !                 Licence No.  GFM-0137                 !
+    !          Licence for Release 11.4 of GEMPACK          !
+    !          U.S. International Trade Commission          !
+    !                     Washington DC                     !
+    !                          USA                          !
+    !    (Your GEMPACK licence expires on 30-APR-2018.)     !
+     -------------------------------------------------------
+ 
+ 
+     << COPYRIGHT 1985-2013: CoPS/Impact and KPSOFT >>
+ 
+  Current directory is: C:\Users\andre.barbe\PycharmProjects\Coal-Restrictions
+ 
+ 
+  Full path name of running EXE is: C:\GP\sltoht.exe
+  Fortran compiler = IF64   version 14.00, build date 20150916
+  OPENMP number of threads: 32
+  Operating system is Windows 8
+ 
+ 
+  ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 
+ 
+                    SLTOHT OPTIONS
+               ( --> indicates those in effect )
+ 
+       BAT Run in batch          --> STI Take inputs from a Stored-input file
+       BPR Brief prompts             SIF Store inputs on a file
+       LOG Output to log file        ASI Add to incomplete Stored-input file
+                                     DES Write description file
+       LV  Which levels results      VAI Variable arguments ignored (har output)
+       SHL Show levels results       SIR Solutions in rows (text output)
+                                     SIC Solutions in columns (text output)
+       SSS Short SS output           SS  Spreadsheet (Sols in cols - text)
+       SHK Shock CMF output          SSE Spreadsheet with element labels
+       SES Short SSE output          NEL No element labels for SIR,SIC,SS,SSS
+                                     SEP Show solutions separately
+                                     HSS HA and SSS output in one run
+                                     PCL %-change for change var in lev results
+ 
+  Select an option   :  <opt>      Deselect an option      : -<opt>
+  Help for an option : ?<opt>      Help on all options     : ??
+  Redisplay options  : /           Finish option selection : Carriage return
+ 
+ Your selection >
+ 
+ 
+ bat           ! Run in batch.
+  (Running in batch)
+ 
+ Your selection >
+ 
+ 
+ log          ! Start a log file
+  Do you want output to go both to the terminal and the log file   [B]
+   or just to the log file  [L]?  ([B] is the default)
+ 
+ 
+ b           ! Output to both terminal and log file
+ 
+  FILE TO WRITE OUTPUT TO
+ 
+  Input the full name (INCLUDING suffix) of this file.
+ 
+ 
+ Control_Files\sltoth_sti.log      ! Name of log file
+ 
+   (Existing file 'Control_Files\sltoth_sti.log' has been deleted.)
+ (Opened new text file
+ 
+  'C:\Users\andre.barbe\PycharmProjects\Coal-Restrictions\Control_Files\sltoth_s
+ ti.log'.)
+  (Sending output to a log file (and the terminal))
+  
+ Your selection >
+  
+  
+ ses
+  
+  
+ Please input the single-character data separator you wish to use.
+ Type x for a space separator or <carriage-return> for ",".
+  
+  
+ ,
+  (Data separator is ','.)
+  
+  (Solutions will be output in SHORT spreadsheet form with element labels)
+  
+ Your selection >
+  
+  
+ shl
+  (Showing levels results, if available)
+  
+ Your selection >
+  
+  
+  
+  
+  SOLUTION FILE TO CONVERT
+  ------------------------
+  
+  Input the full name (excluding suffix) of this file.
+   (The suffix '.sl4' will be appended automatically to your input.)
+  
+  
+ GTAP_Files\SaveSims\coal20.sl4
+ (Opened, as binary, existing file
+  
+  'C:\Users\andre.barbe\PycharmProjects\Coal-Restrictions\GTAP_Files\SaveSims\co
+ al20.sl4'.)
+  
+  !  This file was created at 13:21:44 on 10-OCT-2017 by the program
+  !    <GEMSIM v4.4 Jan 2016> [gtap.tab,GTAP.STI]
+  !  which accesses some of the routines in the GEMPACK software release
+  !    <GEMPACK Release 11.4.003   January 2016>
+  !  [The program which created this file was compiled with IF64.]
+  
+  
+  THE UNDERLYING MODEL IS ' '.
+   VERSION NUMBER IS 1
+    IDENTIFIER IS ' '
+  
+  What follows is a verbal description of the old experiment.
+  
+  
+ 20 pct reduction in coal intensity by electricity in US
+ [Solution method is euler. Steps = 1.]
+ [CMF file: Control_Files\coal.cmf]
+  
+  
+  
+  The value of U used in MA28A was 0.10000000.
+  
+  
+ +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+   Contents of Solution File :
+ +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  
+  Only cumulative solutions (i.e. TOTALS and SUBTOTALS) are available.
+  
+  
+  There are also Levels results on this Solution file.
+   (264 character strings, each of length 1 read. Header 'LVOK')
+  
+ +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  Which solutions from this Solution file do you want :
+ +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  The levels results together with the Cumulative totals  . . .[C] (the default)
+  EXIT program now  . . . . . . . . . . . . . . . . . . . . . .[e]
+  
+  
+  
+ c
+  
+  Only cumulative solutions (i.e. TOTALS and SUBTOTALS) are available
+    in this SOLUTION file.
+  
+  
+  All cumulatively-retained endogenous variables kept.
+   (Real matrix with 29405 rows and 1 columns read. Header 'CUMS')
+   (Real matrix with 29405 rows and 1 columns read. Header 'CUMS')
+   (Real matrix with 3571 rows and 1 columns read. Header 'LEVB')
+   (Real matrix with 3571 rows and 1 columns read. Header 'LEVA')
+  
+  Do you want to use an existing SPREADSHEET MAPPING
+  file to choose which variables and components to output? [Y/n]
+  
+  
+ y
+  
+  EXISTING SPREADSHEET MAPPING FILE TO USE
+  ----------------------------------------
+  
+  Input the full name (INCLUDING suffix) of this file.
+  
+  
+ Control_Files\coal.map
+ (Opened, as text, existing file
+  
+  'C:\Users\andre.barbe\PycharmProjects\Coal-Restrictions\Control_Files\coal.map
+ '.)
+  
+  !  (There is no CREATION information on this file.)
+  
+  
+  Output file to contain solutions
+  --------------------------------
+  
+  Input the full name (INCLUDING suffix) of this file.
+    Enter a CARRIAGE-RETURN to use the name    'GTAP_Files\SaveSims\coal20.csv'.
+  
+  
+ Results\coal20.csv
+  
+   (Existing file 'Results\coal20.csv' has been deleted.)
+ (Opened new text file
+   'C:\Users\andre.barbe\PycharmProjects\Coal-Restrictions\Results\coal20.csv'.)
+ (Writing ONLY CUMULATIVE TOTALS solution to file
+   'C:\Users\andre.barbe\PycharmProjects\Coal-Restrictions\Results\coal20.csv'.)
+  
+  ---------------------------------------------------
+     Variable      !     Array  Size      ! Undefined
+       Name        !                      !  values
+  ---------------------------------------------------
+   qxw             !  8x9x4               !      0
+   qiw             !  8x9x4               !      0
+   qo              !  14x9x4              !      0
+   pm              !  14x9x4              !      0
+   gco2            !  9x4x4               !      0
+   EV              !  9x4                 !      0
+ (New Text file is
+   'C:\Users\andre.barbe\PycharmProjects\Coal-Restrictions\Results\coal20.csv'.)
+  
+  (The program has completed without error.)
+  Total elapsed time is: less than one second.
+  
+  
+  This run ended at 13:21:48 on 10-OCT-2017

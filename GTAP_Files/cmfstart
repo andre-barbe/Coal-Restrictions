@@ -1,0 +1,6 @@
+! This is the default CMFSTART file which RunGTAP uses when
+! a version has no CMFSTART file of its own
+iz1 = no ;
+NDS = yes; ! no displays
+Extrapolation accuracy file = YES ;
+CPU = yes;

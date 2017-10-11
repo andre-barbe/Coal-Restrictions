@@ -1,0 +1,47 @@
+Exogenous
+    afall
+    afcom
+    afreg
+    afsec    
+    ams
+    aoall
+    aoreg
+    aosec
+  ! atall               omitted
+    atd
+    atf
+    atm
+    ats
+    au
+    cgdslack
+    del_ctgshr
+    dpgov
+    dppriv
+    dpsave
+    endwslack
+    incomeslack
+    pemp
+    pfactwld
+    pop
+    profitslack
+    psaveslack
+    qo(ENDW_COMM,REG)
+    RCTAXB
+  ! tf                  omitted
+    tfd
+    tfm
+    tgd
+    tgm
+    tm
+    tms
+    to
+    tpd
+    tpm
+    tp
+    tradslack
+    tx
+    txs
+    pf_slack
+    ;
+Rest Endogenous ;
+

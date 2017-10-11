@@ -1,0 +1,561 @@
+ 
+ ! This file was created at 15:41:44 on 04-SEP-2012 by the program
+ !  <shocks.for 29-JUL-2009> [shocks.tab,shocks.sti]
+ ! which accesses some of the routines in the GEMPACK software release
+ !  <GEMPACK  Release 10.0-001    April 2009>
+ 
+ !     -------------------------------------------------------                
+ !    !            GEMPACK Software System Licence            !               
+ !    !  Source Code Licence for the GEMPACK Software System  !               
+ !    !                 Licence No.  GFM-0048                 !               
+ !    !          Licence for Release 11.0 of GEMPACK          !               
+ !    !           Center for Global Trade Analysis            !               
+ !    !         Department of Agricultural Economics          !               
+ !    !                   Krannert Building                   !               
+ !    !                   Purdue University                   !               
+ !     -------------------------------------------------------                
+    
+ 
+ !
+ ! Values of TFD_HAT(TRAD_COMM,PROD_COMM,REG) - an array of size 8x9x9
+ !-------------------------------------------
+ !
+ 
+ ! (Entries are written one "row" at a time - maximum of 4 per line.)
+ 
+ 
+ 8 9 9  real row_order;
+ 
+ ! (This array is shown as 9 matrices - each of size 8x9.)
+ 
+ ! The matrix TFD_HAT(%1,%2,"USA")
+ !  with %1 in TRAD_COMM and %2 in PROD_COMM. ++++++++++++++++++++++++++++++++
+ 
+ !%2= Agr            Coal            Oil             Gas
+   4.1161304       0.0000000       0.0000000      5.96046493E-06 !%1=Agr
+ !%2= Oil_pcts       Electricity     En_Int_ind      Oth_ind_ser
+   0.0000000       0.0000000      1.78813971E-05 -2.38418525E-05
+ !%2= CGDS
+   0.0000000
+ 
+ !%2= Agr            Coal            Oil             Gas
+   0.0000000       0.0000000       0.0000000       0.0000000     !%1=Coal
+ !%2= Oil_pcts       Electricity     En_Int_ind      Oth_ind_ser
+   0.0000000     -6.82245791E-02 -4.14831098E-03 -3.26622790E-03
+ !%2= CGDS
+   0.0000000
+ 
+ !%2= Agr            Coal            Oil             Gas
+   0.0000000       0.0000000       0.0000000     -1.19209271E-05 !%1=Oil
+ !%2= Oil_pcts       Electricity     En_Int_ind      Oth_ind_ser
+  5.96046493E-06   0.0000000       0.0000000       0.0000000
+ !%2= CGDS
+   0.0000000
+ 
+ !%2= Agr            Coal            Oil             Gas
+ -2.38418525E-05   0.0000000       0.0000000      5.96046493E-06 !%1=Gas
+ !%2= Oil_pcts       Electricity     En_Int_ind      Oth_ind_ser
+ -1.19209271E-05  -1.9845979      -1.8745652      -2.1947229
+ !%2= CGDS
+   0.0000000
+ 
+ !%2= Agr            Coal            Oil             Gas
+  -17.792442       0.0000000       0.0000000       0.0000000     !%1=Oil_pcts
+ !%2= Oil_pcts       Electricity     En_Int_ind      Oth_ind_ser
+   0.0000000      -2.7714164      -17.793329      -17.750343
+ !%2= CGDS
+   0.0000000
+ 
+ !%2= Agr            Coal            Oil             Gas
+   0.0000000      -3.0889823      -3.0889599      -3.0889823     !%1=Electricity
+ !%2= Oil_pcts       Electricity     En_Int_ind      Oth_ind_ser
+  -3.0890160      -3.0889711      -3.0890160      -3.0882881
+ !%2= CGDS
+   0.0000000
+ 
+ !%2= Agr            Coal            Oil             Gas
+   4.9452291       0.0000000       0.0000000       0.0000000     !%1=En_Int_ind
+ !%2= Oil_pcts       Electricity     En_Int_ind      Oth_ind_ser
+   0.0000000       0.0000000       0.0000000      1.19209308E-05
+ !%2= CGDS
+   0.0000000
+ 
+ !%2= Agr            Coal            Oil             Gas
+   4.2195745      1.19209308E-05  5.96046493E-06   0.0000000     !%1=Oth_ind_ser
+ !%2= Oil_pcts       Electricity     En_Int_ind      Oth_ind_ser
+   0.0000000       0.0000000     -1.19209271E-05 -1.19209271E-05
+ !%2= CGDS
+ -0.54984081
+ 
+ ! The matrix TFD_HAT(%1,%2,"EU27")
+ !  with %1 in TRAD_COMM and %2 in PROD_COMM. ++++++++++++++++++++++++++++++++
+ 
+ !%2= Agr            Coal            Oil             Gas
+   4.4256110       0.0000000       0.0000000      1.78813971E-05 !%1=Agr
+ !%2= Oil_pcts       Electricity     En_Int_ind      Oth_ind_ser
+  5.96046493E-06   0.0000000       0.0000000     -2.38418525E-05
+ !%2= CGDS
+ -3.57627723E-05
+ 
+ !%2= Agr            Coal            Oil             Gas
+ -0.76086104      4.35115799E-04 -1.19209271E-05  7.74860964E-05 !%1=Coal
+ !%2= Oil_pcts       Electricity     En_Int_ind      Oth_ind_ser
+   0.0000000      0.91642267      -1.2431885      -3.5275891
+ !%2= CGDS
+   0.0000000
+ 
+ !%2= Agr            Coal            Oil             Gas
+   0.0000000       0.0000000     -6.36537094E-03 -5.00676513E-04 !%1=Oil
+ !%2= Oil_pcts       Electricity     En_Int_ind      Oth_ind_ser
+   0.0000000      0.12854150       1.6544986       0.0000000
+ !%2= CGDS
+   0.0000000
+ 
+ !%2= Agr            Coal            Oil             Gas
+  -8.4236097     -2.38418525E-05   0.0000000     -1.90734499E-04 !%1=Gas
+ !%2= Oil_pcts       Electricity     En_Int_ind      Oth_ind_ser
+  5.96046493E-06  -2.9102926      -7.2735572      -9.4108772
+ !%2= CGDS
+   0.0000000
+ 
+ !%2= Agr            Coal            Oil             Gas
+  -35.127415     -1.54971829E-04   0.0000000     -1.52585562E-03 !%1=Oil_pcts
+ !%2= Oil_pcts       Electricity     En_Int_ind      Oth_ind_ser
+   0.0000000      -17.474194      -36.307201      -36.686054
+ !%2= CGDS
+   0.0000000
+ 
+ !%2= Agr            Coal            Oil             Gas
+  -7.9167218      -3.4381158      -7.8112745      -6.0105104     !%1=Electricity
+ !%2= Oil_pcts       Electricity     En_Int_ind      Oth_ind_ser
+  -11.454187      -2.0603662      -8.1741924      -8.0234613
+ !%2= CGDS
+   0.0000000
+ 
+ !%2= Agr            Coal            Oil             Gas
+   4.9696422      5.96046493E-06  5.96046493E-06   0.0000000     !%1=En_Int_ind
+ !%2= Oil_pcts       Electricity     En_Int_ind      Oth_ind_ser
+   0.0000000       0.0000000     -1.19209271E-05   0.0000000
+ !%2= CGDS
+ -1.52585562E-03
+ 
+ !%2= Agr            Coal            Oil             Gas
+   3.7980940       0.0000000       0.0000000       0.0000000     !%1=Oth_ind_ser
+ !%2= Oil_pcts       Electricity     En_Int_ind      Oth_ind_ser
+   0.0000000       0.0000000       0.0000000       0.0000000
+ !%2= CGDS
+ -5.96046084E-05
+ 
+ ! The matrix TFD_HAT(%1,%2,"EEFSU")
+ !  with %1 in TRAD_COMM and %2 in PROD_COMM. ++++++++++++++++++++++++++++++++
+ 
+ !%2= Agr            Coal            Oil             Gas
+   2.6117182      5.96046493E-06   0.0000000       0.0000000     !%1=Agr
+ !%2= Oil_pcts       Electricity     En_Int_ind      Oth_ind_ser
+   0.0000000       0.0000000      2.38418634E-05   0.0000000
+ !%2= CGDS
+ -0.39215669
+ 
+ !%2= Agr            Coal            Oil             Gas
+  -5.0715265     -2.86101480E-04   0.0000000       0.0000000     !%1=Coal
+ !%2= Oil_pcts       Electricity     En_Int_ind      Oth_ind_ser
+   0.0000000      -1.3454063      -1.0169454      -14.187173
+ !%2= CGDS
+   0.0000000
+ 
+ !%2= Agr            Coal            Oil             Gas
+   1.9633759     -1.19209271E-05 -2.38418525E-05 -5.48359705E-04 !%1=Oil
+ !%2= Oil_pcts       Electricity     En_Int_ind      Oth_ind_ser
+   0.0000000     -0.29693624     -0.33434525      -1.5850602
+ !%2= CGDS
+   0.0000000
+ 
+ !%2= Agr            Coal            Oil             Gas
+  -28.004416       0.0000000       0.0000000     -1.19209271E-05 !%1=Gas
+ !%2= Oil_pcts       Electricity     En_Int_ind      Oth_ind_ser
+   0.0000000      -23.426155      -26.719807      -8.5511351
+ !%2= CGDS
+   0.0000000
+ 
+ !%2= Agr            Coal            Oil             Gas
+  -10.457053      2.98023315E-05 -1.90734499E-04   0.0000000     !%1=Oil_pcts
+ !%2= Oil_pcts       Electricity     En_Int_ind      Oth_ind_ser
+ -1.19209271E-05  -25.811243      -10.224206      -9.6814022
+ !%2= CGDS
+   0.0000000
+ 
+ !%2= Agr            Coal            Oil             Gas
+  -5.2916436      -4.2718391      -8.6873426      -8.8755398     !%1=Electricity
+ !%2= Oil_pcts       Electricity     En_Int_ind      Oth_ind_ser
+  -7.9482689      -1.8711102      -5.9303856      -6.0662599
+ !%2= CGDS
+   0.0000000
+ 
+ !%2= Agr            Coal            Oil             Gas
+   3.2877107       0.0000000       0.0000000       0.0000000     !%1=En_Int_ind
+ !%2= Oil_pcts       Electricity     En_Int_ind      Oth_ind_ser
+   0.0000000       0.0000000      5.96046493E-06   0.0000000
+ !%2= CGDS
+ -0.41663381
+ 
+ !%2= Agr            Coal            Oil             Gas
+   2.8191714       0.0000000     -1.19209271E-05   0.0000000     !%1=Oth_ind_ser
+ !%2= Oil_pcts       Electricity     En_Int_ind      Oth_ind_ser
+   0.0000000       0.0000000     -1.19209271E-05  1.19209308E-05
+ !%2= CGDS
+  -3.6704104
+ 
+ ! The matrix TFD_HAT(%1,%2,"JPN")
+ !  with %1 in TRAD_COMM and %2 in PROD_COMM. ++++++++++++++++++++++++++++++++
+ 
+ !%2= Agr            Coal            Oil             Gas
+   2.4302340       0.0000000       0.0000000      1.19209308E-05 !%1=Agr
+ !%2= Oil_pcts       Electricity     En_Int_ind      Oth_ind_ser
+   0.0000000       0.0000000       0.0000000     -1.19209271E-05
+ !%2= CGDS
+   0.0000000
+ 
+ !%2= Agr            Coal            Oil             Gas
+   0.0000000       0.0000000       0.0000000       0.0000000     !%1=Coal
+ !%2= Oil_pcts       Electricity     En_Int_ind      Oth_ind_ser
+   0.0000000      -3.0597301      -12.959160      -11.378304
+ !%2= CGDS
+   0.0000000
+ 
+ !%2= Agr            Coal            Oil             Gas
+   0.0000000       0.0000000       0.0000000       0.0000000     !%1=Oil
+ !%2= Oil_pcts       Electricity     En_Int_ind      Oth_ind_ser
+   0.0000000       0.0000000       0.0000000       0.0000000
+ !%2= CGDS
+   0.0000000
+ 
+ !%2= Agr            Coal            Oil             Gas
+  5.96046493E-06   0.0000000       0.0000000       0.0000000     !%1=Gas
+ !%2= Oil_pcts       Electricity     En_Int_ind      Oth_ind_ser
+   0.0000000       0.0000000      -7.7606406      -7.9828825
+ !%2= CGDS
+   0.0000000
+ 
+ !%2= Agr            Coal            Oil             Gas
+  -19.060045       0.0000000       0.0000000       0.0000000     !%1=Oil_pcts
+ !%2= Oil_pcts       Electricity     En_Int_ind      Oth_ind_ser
+   0.0000000      -1.0779458      -19.060038      -19.040243
+ !%2= CGDS
+   0.0000000
+ 
+ !%2= Agr            Coal            Oil             Gas
+  -5.7299304       0.0000000       0.0000000      -5.7388287     !%1=Electricity
+ !%2= Oil_pcts       Electricity     En_Int_ind      Oth_ind_ser
+  -5.8349686       0.0000000      -5.8349266      -5.8231392
+ !%2= CGDS
+   0.0000000
+ 
+ !%2= Agr            Coal            Oil             Gas
+   2.6512272       0.0000000       0.0000000       0.0000000     !%1=En_Int_ind
+ !%2= Oil_pcts       Electricity     En_Int_ind      Oth_ind_ser
+   0.0000000       0.0000000      5.96046493E-06  1.78813971E-05
+ !%2= CGDS
+   0.0000000
+ 
+ !%2= Agr            Coal            Oil             Gas
+   2.3897197       0.0000000       0.0000000      1.19209308E-05 !%1=Oth_ind_ser
+ !%2= Oil_pcts       Electricity     En_Int_ind      Oth_ind_ser
+   0.0000000       0.0000000      1.19209308E-05  1.19209308E-05
+ !%2= CGDS
+  -2.0204196
+ 
+ ! The matrix TFD_HAT(%1,%2,"RoA1")
+ !  with %1 in TRAD_COMM and %2 in PROD_COMM. ++++++++++++++++++++++++++++++++
+ 
+ !%2= Agr            Coal            Oil             Gas
+   2.8872008     -5.96046084E-05   0.0000000       0.0000000     !%1=Agr
+ !%2= Oil_pcts       Electricity     En_Int_ind      Oth_ind_ser
+  5.96046493E-06   0.0000000      5.96046493E-06  2.38418634E-05
+ !%2= CGDS
+ -0.32882687
+ 
+ !%2= Agr            Coal            Oil             Gas
+   0.0000000       0.0000000       0.0000000      1.31130393E-04 !%1=Coal
+ !%2= Oil_pcts       Electricity     En_Int_ind      Oth_ind_ser
+   0.0000000      0.43100309      0.21262579     -1.61025822E-02
+ !%2= CGDS
+   0.0000000
+ 
+ !%2= Agr            Coal            Oil             Gas
+   0.0000000       0.0000000       0.0000000       0.0000000     !%1=Oil
+ !%2= Oil_pcts       Electricity     En_Int_ind      Oth_ind_ser
+ -1.19209271E-05   0.0000000     -1.66892729E-04   0.0000000
+ !%2= CGDS
+   0.0000000
+ 
+ !%2= Agr            Coal            Oil             Gas
+  -5.9706759       0.0000000       0.0000000       0.0000000     !%1=Gas
+ !%2= Oil_pcts       Electricity     En_Int_ind      Oth_ind_ser
+   0.0000000      -3.2058935      -5.0850172      -5.6887760
+ !%2= CGDS
+   0.0000000
+ 
+ !%2= Agr            Coal            Oil             Gas
+  -20.772146       0.0000000     -2.38418525E-05 -1.19209271E-05 !%1=Oil_pcts
+ !%2= Oil_pcts       Electricity     En_Int_ind      Oth_ind_ser
+ -1.19209271E-05  -12.848058      -22.794085      -25.123949
+ !%2= CGDS
+   0.0000000
+ 
+ !%2= Agr            Coal            Oil             Gas
+  -5.9344573     -0.98995787      -8.8256426      -8.2074919     !%1=Electricity
+ !%2= Oil_pcts       Electricity     En_Int_ind      Oth_ind_ser
+  -6.2139382     -0.42322996      -5.3392768      -5.9123540
+ !%2= CGDS
+   0.0000000
+ 
+ !%2= Agr            Coal            Oil             Gas
+   3.0904050       0.0000000       0.0000000     -1.19209271E-05 !%1=En_Int_ind
+ !%2= Oil_pcts       Electricity     En_Int_ind      Oth_ind_ser
+  5.96046493E-06   0.0000000     -1.19209271E-05   0.0000000
+ !%2= CGDS
+ -0.91594142
+ 
+ !%2= Agr            Coal            Oil             Gas
+   2.7112055       0.0000000       0.0000000       0.0000000     !%1=Oth_ind_ser
+ !%2= Oil_pcts       Electricity     En_Int_ind      Oth_ind_ser
+  5.96046493E-06   0.0000000       0.0000000       0.0000000
+ !%2= CGDS
+  -4.8460779
+ 
+ ! The matrix TFD_HAT(%1,%2,"EEx")
+ !  with %1 in TRAD_COMM and %2 in PROD_COMM. ++++++++++++++++++++++++++++++++
+ 
+ !%2= Agr            Coal            Oil             Gas
+  0.91995561       0.0000000       0.0000000       0.0000000     !%1=Agr
+ !%2= Oil_pcts       Electricity     En_Int_ind      Oth_ind_ser
+   0.0000000       0.0000000      1.78813971E-05   0.0000000
+ !%2= CGDS
+ -0.14219302
+ 
+ !%2= Agr            Coal            Oil             Gas
+  -1.3635837     -7.27171369E-04 -4.25559049E-03 -4.29151609E-04 !%1=Coal
+ !%2= Oil_pcts       Electricity     En_Int_ind      Oth_ind_ser
+   0.0000000     -0.65498060      -1.3658336      -1.7009034
+ !%2= CGDS
+  2.35434156E-02
+ 
+ !%2= Agr            Coal            Oil             Gas
+ -1.47201801E-02   0.0000000     -1.19209271E-05 -4.76836940E-05 !%1=Oil
+ !%2= Oil_pcts       Electricity     En_Int_ind      Oth_ind_ser
+   0.0000000      2.13549435E-02  2.11164225E-02  4.97886948E-02
+ !%2= CGDS
+   0.0000000
+ 
+ !%2= Agr            Coal            Oil             Gas
+  -4.0015674     -1.19209271E-05   0.0000000      1.19209308E-05 !%1=Gas
+ !%2= Oil_pcts       Electricity     En_Int_ind      Oth_ind_ser
+   0.0000000     -0.77968878      -1.3234730      -1.9078178
+ !%2= CGDS
+   0.0000000
+ 
+ !%2= Agr            Coal            Oil             Gas
+  -10.584005     -2.00267602E-03  1.19209308E-05  6.03831513E-03 !%1=Oil_pcts
+ !%2= Oil_pcts       Electricity     En_Int_ind      Oth_ind_ser
+   0.0000000      -1.3127581      -2.4862349      -3.1885228
+ !%2= CGDS
+   0.0000000
+ 
+ !%2= Agr            Coal            Oil             Gas
+  -2.5700116     -0.12244472      1.38880755E-03 -0.32064292     !%1=Electricity
+ !%2= Oil_pcts       Electricity     En_Int_ind      Oth_ind_ser
+  -1.2413863     -0.51310074      -2.7941189      -2.7584100
+ !%2= CGDS
+   0.0000000
+ 
+ !%2= Agr            Coal            Oil             Gas
+   1.0682238       0.0000000      5.96046493E-06 -2.38418525E-05 !%1=En_Int_ind
+ !%2= Oil_pcts       Electricity     En_Int_ind      Oth_ind_ser
+   0.0000000       0.0000000       0.0000000      5.96046493E-06
+ !%2= CGDS
+ -0.37424645
+ 
+ !%2= Agr            Coal            Oil             Gas
+   1.4252001      1.78813971E-05   0.0000000      5.96046493E-06 !%1=Oth_ind_ser
+ !%2= Oil_pcts       Electricity     En_Int_ind      Oth_ind_ser
+ -1.19209271E-05   0.0000000      5.96046493E-06 -1.19209271E-05
+ !%2= CGDS
+  -1.3457195
+ 
+ ! The matrix TFD_HAT(%1,%2,"CHN")
+ !  with %1 in TRAD_COMM and %2 in PROD_COMM. ++++++++++++++++++++++++++++++++
+ 
+ !%2= Agr            Coal            Oil             Gas
+   1.4894506       0.0000000       0.0000000     -1.19209271E-05 !%1=Agr
+ !%2= Oil_pcts       Electricity     En_Int_ind      Oth_ind_ser
+   0.0000000       0.0000000       0.0000000       0.0000000
+ !%2= CGDS
+   0.0000000
+ 
+ !%2= Agr            Coal            Oil             Gas
+  -7.3758097      5.96046493E-06   0.0000000     -1.19209271E-05 !%1=Coal
+ !%2= Oil_pcts       Electricity     En_Int_ind      Oth_ind_ser
+ -1.19209271E-05  -7.3757992      -7.3757892      -6.7920637
+ !%2= CGDS
+   0.0000000
+ 
+ !%2= Agr            Coal            Oil             Gas
+   0.0000000       0.0000000     -1.19209271E-05 -1.19209271E-05 !%1=Oil
+ !%2= Oil_pcts       Electricity     En_Int_ind      Oth_ind_ser
+  1.19209308E-05  -12.212531      -12.175529      -2.9051120
+ !%2= CGDS
+   0.0000000
+ 
+ !%2= Agr            Coal            Oil             Gas
+  1.19209308E-05   0.0000000       0.0000000     -1.19209271E-05 !%1=Gas
+ !%2= Oil_pcts       Electricity     En_Int_ind      Oth_ind_ser
+ -1.31130044E-04  -9.9944906      -8.7739048      -3.2819493
+ !%2= CGDS
+   0.0000000
+ 
+ !%2= Agr            Coal            Oil             Gas
+  -4.7479391       0.0000000       0.0000000       0.0000000     !%1=Oil_pcts
+ !%2= Oil_pcts       Electricity     En_Int_ind      Oth_ind_ser
+ -1.19209271E-05  -4.7479286      -4.7479177      -4.7423472
+ !%2= CGDS
+   0.0000000
+ 
+ !%2= Agr            Coal            Oil             Gas
+  -3.2915497      -3.2915163      -3.1127341      -3.4607415     !%1=Electricity
+ !%2= Oil_pcts       Electricity     En_Int_ind      Oth_ind_ser
+  -3.2915273      -3.2915273      -3.2915273      -3.2914271
+ !%2= CGDS
+   0.0000000
+ 
+ !%2= Agr            Coal            Oil             Gas
+   2.5870974       0.0000000       0.0000000     -1.19209271E-05 !%1=En_Int_ind
+ !%2= Oil_pcts       Electricity     En_Int_ind      Oth_ind_ser
+   0.0000000     -1.19209271E-05   0.0000000     -1.19209271E-05
+ !%2= CGDS
+   0.0000000
+ 
+ !%2= Agr            Coal            Oil             Gas
+   1.2182596       0.0000000       0.0000000       0.0000000     !%1=Oth_ind_ser
+ !%2= Oil_pcts       Electricity     En_Int_ind      Oth_ind_ser
+  1.19209308E-05 -1.19209271E-05   0.0000000     -1.19209271E-05
+ !%2= CGDS
+  -4.8822012
+ 
+ ! The matrix TFD_HAT(%1,%2,"IND")
+ !  with %1 in TRAD_COMM and %2 in PROD_COMM. ++++++++++++++++++++++++++++++++
+ 
+ !%2= Agr            Coal            Oil             Gas
+ -1.19209271E-05   0.0000000       0.0000000      5.96046493E-06 !%1=Agr
+ !%2= Oil_pcts       Electricity     En_Int_ind      Oth_ind_ser
+   0.0000000       0.0000000       0.0000000      1.19209308E-05
+ !%2= CGDS
+ -0.95696878
+ 
+ !%2= Agr            Coal            Oil             Gas
+   0.0000000       0.0000000       0.0000000     -1.19209271E-05 !%1=Coal
+ !%2= Oil_pcts       Electricity     En_Int_ind      Oth_ind_ser
+   0.0000000      -11.414232      -18.700354      -18.022575
+ !%2= CGDS
+   0.0000000
+ 
+ !%2= Agr            Coal            Oil             Gas
+   0.0000000       0.0000000       0.0000000     -0.40917370     !%1=Oil
+ !%2= Oil_pcts       Electricity     En_Int_ind      Oth_ind_ser
+  1.19209308E-05   0.0000000       0.0000000       0.0000000
+ !%2= CGDS
+   0.0000000
+ 
+ !%2= Agr            Coal            Oil             Gas
+  -4.4627295       0.0000000     -1.19209271E-05   0.0000000     !%1=Gas
+ !%2= Oil_pcts       Electricity     En_Int_ind      Oth_ind_ser
+   0.0000000      -11.707376      -6.3684692      -9.7551603
+ !%2= CGDS
+   0.0000000
+ 
+ !%2= Agr            Coal            Oil             Gas
+  -30.621986       0.0000000       0.0000000       0.0000000     !%1=Oil_pcts
+ !%2= Oil_pcts       Electricity     En_Int_ind      Oth_ind_ser
+ -2.38418525E-05  -12.978581      -30.662357      -30.509024
+ !%2= CGDS
+   0.0000000
+ 
+ !%2= Agr            Coal            Oil             Gas
+   10.835762       10.842001       0.0000000       0.0000000     !%1=Electricity
+ !%2= Oil_pcts       Electricity     En_Int_ind      Oth_ind_ser
+   0.0000000       10.842155       10.842184       10.842184
+ !%2= CGDS
+   0.0000000
+ 
+ !%2= Agr            Coal            Oil             Gas
+   0.0000000     -1.19209271E-05   0.0000000      1.19209308E-05 !%1=En_Int_ind
+ !%2= Oil_pcts       Electricity     En_Int_ind      Oth_ind_ser
+   0.0000000      1.19209308E-05  5.96046493E-06  1.19209308E-05
+ !%2= CGDS
+  -10.779099
+ 
+ !%2= Agr            Coal            Oil             Gas
+  5.96046493E-06   0.0000000       0.0000000       0.0000000     !%1=Oth_ind_ser
+ !%2= Oil_pcts       Electricity     En_Int_ind      Oth_ind_ser
+   0.0000000       0.0000000       0.0000000     -1.19209271E-05
+ !%2= CGDS
+  -3.1573517
+ 
+ ! The matrix TFD_HAT(%1,%2,"ROW")
+ !  with %1 in TRAD_COMM and %2 in PROD_COMM. ++++++++++++++++++++++++++++++++
+ 
+ !%2= Agr            Coal            Oil             Gas
+  0.92154008       0.0000000       0.0000000      1.19209308E-05 !%1=Agr
+ !%2= Oil_pcts       Electricity     En_Int_ind      Oth_ind_ser
+   0.0000000       0.0000000       0.0000000       0.0000000
+ !%2= CGDS
+  -4.5519114
+ 
+ !%2= Agr            Coal            Oil             Gas
+ -5.81164956E-02   0.0000000       0.0000000       0.0000000     !%1=Coal
+ !%2= Oil_pcts       Electricity     En_Int_ind      Oth_ind_ser
+   0.0000000      -3.9236026      -3.6749897      -7.3976908
+ !%2= CGDS
+   0.0000000
+ 
+ !%2= Agr            Coal            Oil             Gas
+   0.0000000       0.0000000       0.0000000     -4.52974765E-03 !%1=Oil
+ !%2= Oil_pcts       Electricity     En_Int_ind      Oth_ind_ser
+   0.0000000      -6.5586233      -11.710340     -0.26800141
+ !%2= CGDS
+ -3.43443193E-02
+ 
+ !%2= Agr            Coal            Oil             Gas
+  -4.8694510     -4.49398812E-03  5.96046493E-06  1.19209308E-05 !%1=Gas
+ !%2= Oil_pcts       Electricity     En_Int_ind      Oth_ind_ser
+ -1.19209271E-05  -6.4191289      -10.001405      -12.259405
+ !%2= CGDS
+  0.22923924
+ 
+ !%2= Agr            Coal            Oil             Gas
+  -19.849127     -1.93115324E-03   0.0000000     -9.53673443E-05 !%1=Oil_pcts
+ !%2= Oil_pcts       Electricity     En_Int_ind      Oth_ind_ser
+   0.0000000      -6.2814159      -9.2175884      -13.764476
+ !%2= CGDS
+   0.0000000
+ 
+ !%2= Agr            Coal            Oil             Gas
+  -5.0004120      -7.0863457      -5.7187099      -2.4997334     !%1=Electricity
+ !%2= Oil_pcts       Electricity     En_Int_ind      Oth_ind_ser
+  -5.3973188      -3.3241832      -4.9802465      -4.3680172
+ !%2= CGDS
+   0.0000000
+ 
+ !%2= Agr            Coal            Oil             Gas
+   3.0332861      4.76837376E-05   0.0000000       0.0000000     !%1=En_Int_ind
+ !%2= Oil_pcts       Electricity     En_Int_ind      Oth_ind_ser
+   0.0000000       0.0000000     -1.19209271E-05   0.0000000
+ !%2= CGDS
+  -1.0657074
+ 
+ !%2= Agr            Coal            Oil             Gas
+  0.82699668      2.38418634E-05 -1.19209271E-05 -1.19209271E-05 !%1=Oth_ind_ser
+ !%2= Oil_pcts       Electricity     En_Int_ind      Oth_ind_ser
+   0.0000000       0.0000000     -1.19209271E-05 -1.19209271E-05
+ !%2= CGDS
+  -2.5203428
+ 
