@@ -14,4 +14,4 @@ class ReadCSV(object):
 
     def create(self) -> None:
         with open("Results\{0}.csv".format(self.file),"r") as reader: #Read the csv file
-            print(reader.readlines()) #read the contents of the CSV file
+            print(reader.readlines()) #read the contents of the csv file
