@@ -8,5 +8,6 @@ shl
 
 GTAP_Files\SaveSims\coal01.sl4
 c
-n
+y
+Control_Files\coal.map
 Results\coal01.csv

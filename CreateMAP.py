@@ -19,7 +19,8 @@ class CreateMAP(object):
                      "qo\n",
                      "pm\n",
                      "gco2\n"
-                     "ev"]
+                     #"ev" #this was causing problems as it only had one matrix so I'm removing it for now
+                     ]
 
         #Create final file
         with open("Control_Files\{0}.map".format(self.file),"w+") as writer: #Create the empty file

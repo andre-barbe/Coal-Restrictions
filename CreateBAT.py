@@ -24,9 +24,9 @@ class CreateBAT(object):
         line_list = [#"cd..\n",     
                      "for %%a in ({0}) do (\n".format(simulation_list_formatted),     
                      "	gemsim -cmf Control_Files\coal.cmf -p1=%%a\n",     
-                     "pause\n",     
+                     #"pause\n",
                      sltoht_line,    
-                     "pause",
+                     #"pause",
                      ")"]
 
         #Create final file

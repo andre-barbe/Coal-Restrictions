@@ -11,7 +11,7 @@ __created__ = "2017-10-5"
 __altered__ = "2017-10-6"
 
 #simulation_list=('01','02','03')
-simulation_list=('10','20')
+simulation_list=('01','01')
 
 CreateBAT("coal",simulation_list).create()
 
@@ -29,4 +29,7 @@ subprocess.call("Control_Files\coal.bat")
     #if it begins with something like "P:" then it is not networked
     #Also note that some drives may be access through either method
 
-ReadCSV("coal",simulation_list).create()
+a=ReadCSV("coal",simulation_list).create2()
+b=ReadCSV("coal",simulation_list).create3()
+
+#The problem was that the final variable only has 1 matrix, so it is a little different from the previous ones
