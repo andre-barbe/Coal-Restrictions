@@ -2,13 +2,13 @@ from CreateSTI import *
 from CreateBAT import *
 from CreateCMF import *
 from CreateMAP import *
-from ReadCSV import *
+from ImportCSV import *
 import subprocess
 
 __author__ = "Andre Barbe"
 __project__ = "Coal Restrictions"
 __created__ = "2017-10-5"
-__altered__ = "2017-10-6"
+__altered__ = "2017-10-14"
 
 #simulation_list=('01','02','03')
 simulation_list=('01','01')
@@ -29,7 +29,6 @@ subprocess.call("Control_Files\coal.bat")
     #if it begins with something like "P:" then it is not networked
     #Also note that some drives may be access through either method
 
-a=ReadCSV("coal",simulation_list).create2()
-b=ReadCSV("coal",simulation_list).create3()
+c=ImportCSV("coal",simulation_list).create()
 
 #The problem was that the final variable only has 1 matrix, so it is a little different from the previous ones
