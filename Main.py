@@ -22,7 +22,6 @@ CreateCMF("coal").create()
 
 CreateMAP("coal").create()
 
-#subprocess.call("Control_Files\coal.bat")
 subprocess.call("Control_Files\coal.bat")
     #note: this will fail to run if the file is on a networked drive
     #for example, if the drive begins with "\\hq-fs-1\", it is networked

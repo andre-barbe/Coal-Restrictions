@@ -1,7 +1,7 @@
 __author__ = "Andre Barbe"
 __project__ = "Coal Restrictions"
 __created__ = "2017-10-6"
-__altered__ = "2017-10-6"  
+__altered__ = "2017-10-16"
 
 class CreateMAP(object):
     """Creates the MAP File for use in SLTOTH"""
@@ -19,7 +19,7 @@ class CreateMAP(object):
                      "qo\n",
                      "pm\n",
                      "gco2\n"
-                     #"ev" #this was causing problems as it only had one matrix so I'm removing it for now
+                     "ev" #this only has one matrix and so can sometime cause problems
                      ]
 
         #Create final file
