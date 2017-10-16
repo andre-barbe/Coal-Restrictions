@@ -1,5 +1,5 @@
  
- This GEMPACK log file was created at 10:32:17 on 16-OCT-2017 by the program
+ This GEMPACK log file was created at 15:03:46 on 16-OCT-2017 by the program
   <SLTOHT   Version 5.53  July 2013>
  which accesses some of the routines in the GEMPACK software release
   <GEMPACK Release 11.4.003   January 2016>
@@ -138,7 +138,7 @@
   'C:\Users\andre.barbe\PycharmProjects\Coal-Restrictions\GTAP_Files\SaveSims\co
  al01.sl4'.)
   
-  !  This file was created at 10:32:16 on 16-OCT-2017 by the program
+  !  This file was created at 15:03:45 on 16-OCT-2017 by the program
   !    <GEMSIM v4.4 Jan 2016> [gtap.tab,GTAP.STI]
   !  which accesses some of the routines in the GEMPACK software release
   !    <GEMPACK Release 11.4.003   January 2016>
@@ -244,4 +244,4 @@
   Total elapsed time is: less than one second.
   
   
-  This run ended at 10:32:17 on 16-OCT-2017
+  This run ended at 15:03:46 on 16-OCT-2017

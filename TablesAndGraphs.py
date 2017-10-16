@@ -15,7 +15,7 @@ class TablesAndGraphs(object):
 
     def create(self) -> None:
         # Create the contents to be written to the file
-        line_list = ["qxw\thello\n",
+        line_list1 = ["qxw\thello\n",
                      "qiw\n",
                      "qo\n",
                      "pm\n",
@@ -23,7 +23,7 @@ class TablesAndGraphs(object):
                      "ev"  # this only has one matrix and so can sometime cause problems
                      ]
 
-        # Create final file 
+        # Create final file
         with open("Final\{0}.txt".format(self.file), "w+") as writer:  # Create the empty file
-            writer.writelines(line_list)  # write the line list to the file
+            writer.writelines(line_list1)  # write the line list to the file
 
