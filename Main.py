@@ -3,6 +3,7 @@ from CreateBAT import *
 from CreateCMF import *
 from CreateMAP import *
 from ImportCSV import *
+from TablesAndGraphs import *
 import subprocess
 
 __author__ = "Andre Barbe"
@@ -29,5 +30,5 @@ subprocess.call("Control_Files\coal.bat")
     #Also note that some drives may be access through either method
 
 c=ImportCSV("coal",simulation_list).create()
-
+TablesAndGraphs("coal",c).create()
 #The problem was that the final variable only has 1 matrix, so it is a little different from the previous ones
