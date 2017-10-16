@@ -24,7 +24,7 @@ class ImportCSV(object):
 
     def create(self) -> dict:
         """
-        Takes the CSV file of lines and returns a dictionary of uncleaned values
+        Takes the CSV file of lines and returns a dictionary of cleaned values
         :return:
         """
         variable_values = {}
@@ -36,23 +36,38 @@ class ImportCSV(object):
             name_row=[]
 
             for line in self.filecontents(simulation):
-                if line[0:12] == " ! Variable " and line[-2:] == "#\n": #checks if line contains name of subsequent array
+                do_not_store_this_line=0
+
+                # checks if line contains name of subsequent array
+                if line[0:12] == " ! Variable " and line[-2:] == "#\n":
                     name_array=(line[12:].split(" "))[0]
+                    name_matrix = []
+                    list_name_col = []
+                    name_col = []
+                    do_not_store_this_line=1
 
-                if line[0:14] == " ! The matrix ": #checks if line contains name of subsequent matrix
-                    name_matrix = (line.split(":\"")[1]).split("\"")[0]
-
-                if name_array!=[]: #checks if line contains name of columns
+                # checks if line contains name of columns (and also matrix)
+                if name_array!=[]:
                     if line.split("(")[0] == " "+name_array:
-                        list_name_col=line.split(",")
+                        list_name_col=line.split(",") #defines name of matrix
+                        name_matrix = line.split(")")[0].split(":")[-1].strip("\"") #defines name of matrix
+                        do_not_store_this_line = 1
 
-                name_row = line.split(",")[0] #row name is just first entry of a line
+                # row name is just first entry of a line
+                name_row = line.split(",")[0].strip()
+
 
                 #foreach cell in a line, assigns its value to a dictionary with keys for the array, matrix, col, and row names
                 for i, cell in enumerate(line.split(",")):
                     if name_array != [] and name_matrix != [] and name_row !=[] and list_name_col!=[]:
-                        name_col = list_name_col[i]
-                        variable_values[simulation,name_array,name_matrix,name_row,name_col]=cell
+                        name_col = list_name_col[i].strip()
+                        if(do_not_store_this_line==0 and i!=0 and name_col!=""):
+                            key = (simulation, name_array, name_matrix, name_row, name_col)
+                            variable_values[key]=cell
+                            print(key)
 
         return variable_values
+
+
+
 
