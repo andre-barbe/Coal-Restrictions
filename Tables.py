@@ -16,7 +16,7 @@ class TablesAndGraphs(object):
     def create(self) -> None:
         # Create the contents to be written to the file
         us_exports=[]
-        simulation_list_1=["01"]
+        simulation_list_1=['00','10','20','30','40','50']
         for i in simulation_list_1:
             key=(i,"qxw","Linear","Coal","USA")
             us_exports.append(self.database[key])
@@ -27,7 +27,7 @@ class TablesAndGraphs(object):
                      "Production\n",
                      "Consumption\n",
                      "Imports\n",
-                      "Exports\t{0}\n".format(us_exports[0]),
+                      "Exports\t{0}\t{1}\t{2}\t{3}\t{4}\n".format(*us_exports),
                      #"Exports\t{0}\t{1}\t{2}\t{3}\t{4}\n".format(us_exports),
                      "\n",
                      "\n",

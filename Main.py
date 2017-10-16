@@ -12,7 +12,7 @@ __created__ = "2017-10-5"
 __altered__ = "2017-10-14"
 
 #simulation_list=('01','02','03')
-simulation_list=('01','01')
+simulation_list=('00','01','10','11','20','21','30','31','40','41','50','51')
 
 CreateBAT("coal",simulation_list).create()
 
@@ -23,7 +23,7 @@ CreateCMF("coal").create()
 
 CreateMAP("coal").create()
 
-subprocess.call("Control_Files\coal.bat")
+#subprocess.call("Control_Files\coal.bat")
     #note: this will fail to run if the file is on a networked drive
     #for example, if the drive begins with "\\hq-fs-1\", it is networked
     #if it begins with something like "P:" then it is not networked
