@@ -3,7 +3,7 @@ from CreateBAT import *
 from CreateCMF import *
 from CreateMAP import *
 from ImportCSV import *
-from TablesAndGraphs import *
+from Tables import *
 import subprocess
 
 __author__ = "Andre Barbe"

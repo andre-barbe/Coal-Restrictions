@@ -63,8 +63,7 @@ class ImportCSV(object):
                         name_col = list_name_col[i].strip()
                         if(do_not_store_this_line==0 and i!=0 and name_col!=""):
                             key = (simulation, name_array, name_matrix, name_row, name_col)
-                            variable_values[key]=cell
-                            print(key)
+                            variable_values[key]=cell.strip()
 
         return variable_values
 
