@@ -1,7 +1,7 @@
 __author__ = "Andre Barbe"
 __project__ = "Coal Restrictions"
 __created__ = "2017-10-16"
-__altered__ = "2017-10-16"
+__altered__ = "2017-10-17"
 
 
 class TablesAndGraphs(object):
