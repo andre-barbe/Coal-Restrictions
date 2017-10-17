@@ -3,6 +3,7 @@ from CreateBAT import *
 from CreateCMF import *
 from CreateMAP import *
 from ImportCSV import *
+from PostEstimation import *
 from Tables import *
 import subprocess
 
@@ -30,5 +31,6 @@ CreateMAP("coal").create()
     #Also note that some drives may be access through either method
 
 c=ImportCSV("coal",simulation_list).create()
-TablesAndGraphs("coal",c).create()
+d=PostEstimation(c).create()
+TablesAndGraphs("coal",d).create()
 #The problem was that the final variable only has 1 matrix, so it is a little different from the previous ones

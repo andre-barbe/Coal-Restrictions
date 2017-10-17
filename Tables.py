@@ -13,51 +13,55 @@ class TablesAndGraphs(object):
         self.file = file
         self.database = database
 
+
     def create_variable_line(self,row_label,array,matrix,row,column,simulation_list) -> str:
         # Create a line with a variable and its information
-        variable_line = row_label
-        for i in simulation_list:
+        variable_line = row_label #line starts with the row lable
+        for i in simulation_list: #add an entry to the line for each simulation in list
             key = (i, array, matrix, row, column)
-            variable_line += "\t" + self.database[key]
-        variable_line += "\n"
+            variable_line += "\t" + "{:,}".format(round(self.database[key]))
+                #Adds database entries to the line, seperatored by tabs
+                #"{:,}".format(value) adds a thousands seperator
+        variable_line += "\n" #end line with newline character
         return variable_line
 
     def create(self) -> None:
-        # Create the contents to be written to the file
-        simulation_list_1 = ['00', '10', '20', '30', '40', '50']
-        line_us_exports=self.create_variable_line("Exports ","qxw","Linear","Coal","USA",simulation_list_1)
+        # Writes output to a text file
+        simulation_list_1 = ['10', '20', '30', '40', '50'] #hardcode simulation list for now
 
-
+        #Create lines to write to text file
         line_list = ["Table 1: Changes in U.S. Coal Trade (Percent)\n",
                      "\tCoal Intensity Reduction Policy (percent)\n",
                      "\t"+"\t".join(simulation_list_1)+"\n",
-                     self.create_variable_line("Production ", "qo", "Linear", "Coal", "USA", simulation_list_1),
-                     "Consumption\n",
-                     self.create_variable_line("Imports ", "qiw", "Linear", "Coal", "USA", simulation_list_1),
-                     self.create_variable_line("Exports ", "qxw", "Linear", "Coal", "USA", simulation_list_1),
+                     self.create_variable_line("Production", "qo", "Linear", "Coal", "USA", simulation_list_1),
+                     self.create_variable_line("Imports", "qiw", "Linear", "Coal", "USA", simulation_list_1),
+                     self.create_variable_line("Exports", "qxw", "Linear", "Coal", "USA", simulation_list_1),
                      "\n",
                      "\n",
                      "\n",
 
                      "Table 2: Changes in Non-U.S. Coal Trade (Percent)\n",
                      "\tCoal Intensity Reduction Policy (percent)\n",
-                     "\t10\t20\t30\t40\t50\n",
-                     "Production\n",
-                     "Consumption\n",
-                     "Imports\n",
-                     "Exports\n",
+                     "\t"+"\t".join(simulation_list_1)+"\n",
+                     self.create_variable_line("Production", "qo", "Linear", "Coal", "NonUS", simulation_list_1),
+                     self.create_variable_line("Imports", "qiw", "Linear", "Coal", "NonUS", simulation_list_1),
+                     self.create_variable_line("Exports", "qxw", "Linear", "Coal", "NonUS", simulation_list_1),
                      "\n",
                      "\n",
                      "\n",
 
                      "Table 3: Change in Carbon Emissions and Coal Exports from Restricting Coal Consumption\n",
                      "\tCoal Intensity Reduction Policy (percent)\n",
-                     "\t10\t20\t30\t40\t50\n",
+                     "\t"+"\t".join(simulation_list_1)+"\n",
                      "Cumulative Change in Emissions by Source (million MT)\n",
-                     "\tU.S. Coal\t-204\t-427\t-676\t-958\t-1,294\n",
-                     "\tU.S. Oil and Gas\t31\t72\t127\t212\t368\n",
-                     "\tNon-U.S.\t-1\t-2\t-2\t-3\t-4\n",
+                     "\t" + self.create_variable_line("U.S.", "gco2", "Changes", "USA", "ZZZZTotal", simulation_list_1),
+                     "\t" + self.create_variable_line("U.S. Coal", "gco2", "Changes", "USA", "coal", simulation_list_1),
+                     "\t" + self.create_variable_line("U.S. Oil", "gco2", "Changes", "USA", "oil", simulation_list_1),
+                     "\t" + self.create_variable_line("U.S. Gas", "gco2", "Changes", "USA", "gas", simulation_list_1),
+                     "\t" + self.create_variable_line("Non-U.S.", "gco2", "Changes", "NonUS", "ZZZZTotal", simulation_list_1),
+                     "\t" + self.create_variable_line("Total World", "gco2", "Changes", "ZZZZTotal", "ZZZZTotal", simulation_list_1),
                      "\tTotal World\t-173\t-357\t-551\t-750\t-930\n",
+
                      "\n",
                      "Change in Total U.S. Emissions (percent)\t-3\t-6\t-10\t-13\t-17\n",
                      "\n",
@@ -66,11 +70,14 @@ class TablesAndGraphs(object):
 
                      "Table 4: Change in Welfare from Restricting Coal Consumption\n",
                      "\tCoal Intensity Reduction Policy (percent)\n",
-                     "\t10\t20\t30\t40\t50\n",
+                     "\t"+"\t".join(simulation_list_1)+"\n",
                      "Change in Welfare (billion USD)\n",
-                     "\tU.S.\t-1.3\t-5.6\t-15.3\t-36.6\t-89.9\n",
+                     "Millions\t" + self.create_variable_line("U.S.", "EV", "Lin+Lev", "USA", "Linear", simulation_list_1),
+                     self.create_variable_line("Non_U.S.", "EV", "Lin+Lev", "NonUS", "Linear",simulation_list_1),
+
                      "\tNon-U.S.\t0.2\t0.9\t2.4\t5.7\t13.8\n",
                      "\tTotal World\t-1.1\t-4.7\t-12.9\t-30.9\t-76.1\n",
+                     self.create_variable_line("Total World", "EV", "Lin+Lev", "ZZZZTotal", "Linear", simulation_list_1),
                      "\n",
                      "Ratio of Change in Welfare, Non-U.S. / U.S.\t-0.19\t-0.17\t-0.16\t-0.16\t-0.15\n",
                      "\n",
