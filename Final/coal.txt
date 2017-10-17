@@ -1,8 +1,11 @@
 Table 1: Changes in U.S. Coal Trade (Percent)
 	Coal Intensity Reduction Policy (percent)
-	10	20	30	40	50
-Production
+	00	10	20	30	40	50
+Production 	0.0000000	-8.2719240	-16.543848	-24.815771	-33.087696	-41.359615
 Consumption
+Imports 	0.0000000	-6.3556547	-12.711309	-19.066963	-25.422619	-31.778271
+Exports 	0.0000000	2.9011173	5.8022346	8.7033472	11.604469	14.505587
+=======
 Imports
 Exports	0.0000000	3.3057778	7.7000570	13.868818	23.243471
 

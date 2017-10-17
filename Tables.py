@@ -13,22 +13,28 @@ class TablesAndGraphs(object):
         self.file = file
         self.database = database
 
+    def create_variable_line(self,row_label,array,matrix,row,column,simulation_list) -> str:
+        # Create a line with a variable and its information
+        variable_line = row_label
+        for i in simulation_list:
+            key = (i, array, matrix, row, column)
+            variable_line += "\t" + self.database[key]
+        variable_line += "\n"
+        return variable_line
+
     def create(self) -> None:
         # Create the contents to be written to the file
-        us_exports=[]
-        simulation_list_1=['00','10','20','30','40','50']
-        for i in simulation_list_1:
-            key=(i,"qxw","Linear","Coal","USA")
-            us_exports.append(self.database[key])
+        simulation_list_1 = ['00', '10', '20', '30', '40', '50']
+        line_us_exports=self.create_variable_line("Exports ","qxw","Linear","Coal","USA",simulation_list_1)
+
 
         line_list = ["Table 1: Changes in U.S. Coal Trade (Percent)\n",
                      "\tCoal Intensity Reduction Policy (percent)\n",
-                     "\t10\t20\t30\t40\t50\n",
-                     "Production\n",
+                     "\t"+"\t".join(simulation_list_1)+"\n",
+                     self.create_variable_line("Production ", "qo", "Linear", "Coal", "USA", simulation_list_1),
                      "Consumption\n",
-                     "Imports\n",
-                      "Exports\t{0}\t{1}\t{2}\t{3}\t{4}\n".format(*us_exports),
-                     #"Exports\t{0}\t{1}\t{2}\t{3}\t{4}\n".format(us_exports),
+                     self.create_variable_line("Imports ", "qiw", "Linear", "Coal", "USA", simulation_list_1),
+                     self.create_variable_line("Exports ", "qxw", "Linear", "Coal", "USA", simulation_list_1),
                      "\n",
                      "\n",
                      "\n",
