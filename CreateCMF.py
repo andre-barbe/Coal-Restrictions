@@ -29,7 +29,7 @@ class CreateCMF(object):
                         "accuracy criterion = Data;",
                         "subintervals = 6;"]
 
-        method_list=method_list_j
+        method_list=method_list_g
 
         #Create unimportant lines and combine them with important lines
         line_list = [   "! This Command file\n",

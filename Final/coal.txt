@@ -4,7 +4,7 @@ Table 1: Changes in U.S. Coal Trade (Percent)
 Production
 Consumption
 Imports
-Exports	0.0000000	2.9011173	5.8022346	8.7033472	11.604469
+Exports	0.0000000	3.3057778	7.7000570	13.868818	23.243471
 
 
 
