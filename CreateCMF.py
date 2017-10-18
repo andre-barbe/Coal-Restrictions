@@ -7,29 +7,32 @@ __altered__ = "2017-10-18"
 class CreateCMF(object):
     """Creates the CMF File"""
 
-    __slots__ = ["file"]
+    __slots__ = ["project", "solution_method"]
 
-    def __init__(self, file: str) -> None:
-        self.file = file
+    def __init__(self, project: str, solution_method: str) -> None:
+        self.project = project
+        self.solution_method = solution_method
 
     def create(self) -> None:
+
         # Create important lines that you need to worry about
-        method_list_j = ["Method = Johansen;\n",
-                         "Steps = 1;\n",
-                         "automatic accuracy = no;\n",
-                         "subintervals = 1;\n"]
-
-        method_list_g = ["Method = Gragg;",
-                         "Steps = 6 12 18;",
-                         "automatic accuracy = yes;",
-                         "accuracy figures = 4;",
-                         "accuracy percent = 80;",
-                         "minimum subinterval length =  1.0E-0003;",
-                         "minimum subinterval fails = stop;",
-                         "accuracy criterion = Data;",
-                         "subintervals = 6;"]
-
-        method_list = method_list_g
+        if self.solution_method == "default_j":
+            method_list = ["Method = Johansen;\n",
+                           "Steps = 1;\n",
+                           "automatic accuracy = no;\n",
+                           "subintervals = 1;\n"]
+        elif self.solution_method == "default_g":
+            method_list = ["Method = Gragg;",
+                           "Steps = 6 12 18;",
+                           "automatic accuracy = yes;",
+                           "accuracy figures = 4;",
+                           "accuracy percent = 80;",
+                           "minimum subinterval length =  1.0E-0003;",
+                           "minimum subinterval fails = stop;",
+                           "accuracy criterion = Data;",
+                           "subintervals = 6;"]
+        else:
+            raise ValueError('Unknown solution method in CMF')
 
         # Create unimportant lines and combine them with important lines
         line_list = ["! This Command file\n",
@@ -135,5 +138,5 @@ class CreateCMF(object):
                         "shock intf(\"Coal\",\"Electricity\",\"usa\") = -<p1>;\n"]
 
         # Create final file
-        with open("Control_Files\{0}.cmf".format(self.file), "w+") as writer:  # Create the empty file
+        with open("Control_Files\{0}.cmf".format(self.project), "w+") as writer:  # Create the empty file
             writer.writelines(line_list)  # write the line list to the file

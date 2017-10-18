@@ -16,7 +16,11 @@ Solution file = GTAP_Files\SaveSims\coal<p1>;
 file gtapPARM = GTAP_Files\default.prm;
 Verbal Description =
 <p1> pct reduction in coal intensity by electricity in US;
-Method = Gragg;Steps = 6 12 18;automatic accuracy = yes;accuracy figures = 4;accuracy percent = 80;minimum subinterval length =  1.0E-0003;minimum subinterval fails = stop;accuracy criterion = Data;subintervals = 6;! basic closure
+Method = Johansen;
+Steps = 1;
+automatic accuracy = no;
+subintervals = 1;
+! basic closure
 exogenous
     afall
     afcom

@@ -9,10 +9,10 @@ __altered__ = "2017-10-18"
 class ImportCSV(object):
     """Imports the CSV Files created by SLTOHT"""
 
-    __slots__ = ["file", "simulation_list"]
+    __slots__ = ["project", "simulation_list"]
 
-    def __init__(self, file: str, simulation_list: List[str]) -> None:
-        self.file = file
+    def __init__(self, project: str, simulation_list: List[str]) -> None:
+        self.project = project
         self.simulation_list = simulation_list
 
     def filecontents(self, simulation_number) -> List[str]:
@@ -20,7 +20,7 @@ class ImportCSV(object):
         Reads the CSV file into memory
         :return:
         """
-        with open("Results\{0}{1}.csv".format(self.file, simulation_number), "r") as reader:  # Read the csv file
+        with open("Results\{0}{1}.csv".format(self.project, simulation_number), "r") as reader:  # Read the csv file
             return [line for line in reader.readlines() if
                     line != " \n"]  # deletes lines that are nothing but line breaks
 
