@@ -24,10 +24,73 @@ class TablesAndGraphs(object):
                 #"{:,}".format(value) adds a thousands seperator
         variable_line += "\n" #end line with newline character
         return variable_line
+    
+    def create_variable_line_ratio(self,row_label,numerator,denominator, simulation_list) -> str:
+        #save the function entries in a more manageable form
+        
+        #numerator
+        num_array=numerator[0]
+        num_matrix=numerator[1]
+        num_row=numerator[2]
+        num_column=numerator[3]
+
+        #denominator
+        den_array=denominator[0]
+        den_matrix=denominator[1]
+        den_row=denominator[2]
+        den_column=denominator[3]
+
+        # Create a line with a variable and its information
+        variable_line = row_label #line starts with the row lable
+        for simulation in simulation_list: #add an entry to the line for each simulation in list
+            numerator_key = (simulation, num_array, num_matrix, num_row, num_column)
+            denominator_key = (simulation, den_array, den_matrix, den_row, den_column)
+            ratio_value=round(self.database[numerator_key]/self.database[denominator_key],2)
+            variable_line += "\t" + "{:,}".format(ratio_value)
+                #Adds database entries to the line, seperatored by tabs
+                #"{:,}".format(value) adds a thousands seperator
+        variable_line += "\n" #end line with newline character
+        return variable_line
+
+    def create_variable_line_marginal(self, row_label, numerator1, numerator2,denominator1, denominator2) -> str:
+        # save the function entries in a more manageable form
+
+        # Create a line with a variable and its information
+        variable_line = row_label  # line starts with the row lable
+        for i, simulation in enumerate(numerator1[0]):  # add an entry to the line for each simulation in list
+
+            # (,) is used to convert element to tuple and then add with the other tuple
+            numerator1_key = (numerator1[0][i],)+numerator1[1:]
+            numerator2_key = (numerator2[0][i],)+numerator2[1:]
+            denominator1_key = (denominator1[0][i],)+denominator1[1:]
+            denominator2_key = (denominator2[0][i],)+denominator2[1:]
+
+            value = round((self.database[numerator2_key]-self.database[numerator1_key]) /
+                          (self.database[denominator2_key]-self.database[denominator1_key]))
+            variable_line += "\t" + "{:,}".format(value)
+            # Adds database entries to the line, seperatored by tabs
+            # "{:,}".format(value) adds a thousands seperator
+        variable_line += "\n"  # end line with newline character
+        return variable_line
 
     def create(self) -> None:
         # Writes output to a text file
         simulation_list_1 = ['10', '20', '30', '40', '50'] #hardcode simulation list for now
+
+
+        test=self.create_variable_line("Production", "qo", "Linear", "Coal", "USA", simulation_list_1)
+
+        numer=["EV", "Lin+Lev", "NonUS", "Linear"]
+        denom=["EV", "Lin+Lev", "USA", "Linear"]
+        line_ratio_change_welfare_nonus_us = self.create_variable_line_ratio(
+            "Ratio of Change in Welfare, Non-U.S. / U.S.",numer,denom, simulation_list_1)
+
+        simulation_list_2 = ['11', '21', '31', '41', '51'] #hardcode simulation list for now
+        numer1=(simulation_list_1,"EV", "Lin+Lev", "USA", "Linear")
+        numer2 = (simulation_list_2,"EV", "Lin+Lev", "USA", "Linear")
+        denom1=(simulation_list_1,"gco2", "PostLevel", "Total", "Total")
+        denom2 = (simulation_list_2,"gco2", "PostLevel", "Total", "Total")
+        line_marginal_us_welfare_cost = self.create_variable_line_marginal("Marginal U.S. Welfare Cost (USD per MT)",numer1,numer2,denom1,denom2)
 
         #Create lines to write to text file
         line_list = ["Table 1: Changes in U.S. Coal Trade (Percent)\n",
@@ -54,16 +117,14 @@ class TablesAndGraphs(object):
                      "\tCoal Intensity Reduction Policy (percent)\n",
                      "\t"+"\t".join(simulation_list_1)+"\n",
                      "Cumulative Change in Emissions by Source (million MT)\n",
-                     "\t" + self.create_variable_line("U.S.", "gco2", "Changes", "USA", "ZZZZTotal", simulation_list_1),
+                     "\t" + self.create_variable_line("U.S.", "gco2", "Changes", "USA", "Total", simulation_list_1),
                      "\t" + self.create_variable_line("U.S. Coal", "gco2", "Changes", "USA", "coal", simulation_list_1),
                      "\t" + self.create_variable_line("U.S. Oil", "gco2", "Changes", "USA", "oil", simulation_list_1),
                      "\t" + self.create_variable_line("U.S. Gas", "gco2", "Changes", "USA", "gas", simulation_list_1),
-                     "\t" + self.create_variable_line("Non-U.S.", "gco2", "Changes", "NonUS", "ZZZZTotal", simulation_list_1),
-                     "\t" + self.create_variable_line("Total World", "gco2", "Changes", "ZZZZTotal", "ZZZZTotal", simulation_list_1),
-                     "\tTotal World\t-173\t-357\t-551\t-750\t-930\n",
-
+                     "\t" + self.create_variable_line("Non-U.S.", "gco2", "Changes", "NonUS", "Total", simulation_list_1),
+                     "\t" + self.create_variable_line("Total World", "gco2", "Changes", "Total", "Total", simulation_list_1),
                      "\n",
-                     "Change in Total U.S. Emissions (percent)\t-3\t-6\t-10\t-13\t-17\n",
+                     self.create_variable_line("Change in Total U.S. Emissions (percent)", "gco2", "Levels", "USA", "Total", simulation_list_1),
                      "\n",
                      "\n",
                      "\n",
@@ -71,17 +132,14 @@ class TablesAndGraphs(object):
                      "Table 4: Change in Welfare from Restricting Coal Consumption\n",
                      "\tCoal Intensity Reduction Policy (percent)\n",
                      "\t"+"\t".join(simulation_list_1)+"\n",
-                     "Change in Welfare (billion USD)\n",
-                     "Millions\t" + self.create_variable_line("U.S.", "EV", "Lin+Lev", "USA", "Linear", simulation_list_1),
+                     "Change in Welfare (million USD)\n",
+                     self.create_variable_line("U.S.", "EV", "Lin+Lev", "USA", "Linear", simulation_list_1),
                      self.create_variable_line("Non_U.S.", "EV", "Lin+Lev", "NonUS", "Linear",simulation_list_1),
-
-                     "\tNon-U.S.\t0.2\t0.9\t2.4\t5.7\t13.8\n",
-                     "\tTotal World\t-1.1\t-4.7\t-12.9\t-30.9\t-76.1\n",
-                     self.create_variable_line("Total World", "EV", "Lin+Lev", "ZZZZTotal", "Linear", simulation_list_1),
+                     self.create_variable_line("Total World", "EV", "Lin+Lev", "Total", "Linear", simulation_list_1),
                      "\n",
-                     "Ratio of Change in Welfare, Non-U.S. / U.S.\t-0.19\t-0.17\t-0.16\t-0.16\t-0.15\n",
+                     line_ratio_change_welfare_nonus_us,
                      "\n",
-                     "Marginal U.S. Welfare Cost (USD per MT CO2)\t15\t35\t73\t166\t678\n",
+                     line_marginal_us_welfare_cost
                       ]
 
         # Create final file

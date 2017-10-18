@@ -3,7 +3,7 @@ __project__ = "Coal Restrictions"
 __created__ = "2017-10-17"
 __altered__ = "2017-10-17"
 
-class PostEstimation(object):
+class PostEstimationZZZZ(object):
     """Creates new variables and regions after estimation completes"""
 
     __slots__ = ["database"]
@@ -37,7 +37,7 @@ class PostEstimation(object):
                                 key_to_match=(simulation,array,matrix,row)
                                 #print(self.database)
                                 sum_of_cols_in_row=sum(self.database[key] for key in matrix_database.keys() if key[0:4]==key_to_match)
-                                key_total = key_to_match + ("Total",)
+                                key_total = key_to_match + ("ZZZZTotal",)
                                     #the name makes sure this col will be sorted to the last so the col sums are correct)
                                 self.database[key_total]=sum_of_cols_in_row
                                 database_of_added[key_total] = sum_of_cols_in_row #for creating levels
@@ -49,7 +49,7 @@ class PostEstimation(object):
                                 #Creates sum of rows in a column
                                 key_to_match=(col,simulation,array,matrix)
                                 sum_of_rows_in_col=sum(self.database[key] for key in matrix_database.keys() if (key[-1:]+key[:3])==key_to_match)
-                                key_total = key_to_match + ("Total",)
+                                key_total = key_to_match + ("ZZZZTotal",)
                                 key_total = key_total[1:] +key_total[:1]
                                 self.database[key_total]=sum_of_rows_in_col
                                 database_of_added[key_total] = sum_of_cols_in_row #for creating levels
@@ -62,7 +62,7 @@ class PostEstimation(object):
                                 # Creates sum of non-US columns in a row
                                 key_us = (simulation, array, matrix, row, "USA")
                                 if key_us in matrix_database:
-                                    key_total= (simulation, array, matrix, row, "Total")
+                                    key_total= (simulation, array, matrix, row, "ZZZZTotal")
                                     key_non_us= (simulation, array, matrix, row, "NonUS")
                                     self.database[key_non_us] = self.database[key_total] - self.database[key_us]
                                     database_of_added[key_total] = sum_of_cols_in_row  # for creating levels
@@ -73,7 +73,7 @@ class PostEstimation(object):
                                 # Creates sum of rows in a column
                                 key_us = (simulation, array, matrix, "USA", col)
                                 if key_us in matrix_database:
-                                    key_total= (simulation, array, matrix, "Total", col)
+                                    key_total= (simulation, array, matrix, "ZZZZTotal", col)
                                     key_non_us= (simulation, array, matrix, "NonUS", col)
                                     self.database[key_non_us] = self.database[key_total] - self.database[key_us]
                                     database_of_added[key_total] = sum_of_cols_in_row  # for creating levels
@@ -89,4 +89,14 @@ class PostEstimation(object):
                                     self.database[simulation,array,"PreLevel",row,col]
                                 #Need to be careful here since it could overwrite eexisting levels
 
-            return self.database
+            new_database=dict(self.database)
+            for key in self.database.keys():
+                    newkey=(tuple(s if s!="ZZZZTotal" else "Total" for s in key))
+                    if key!=newkey:
+                        print(key)
+                        print(newkey)
+                        new_database[newkey]=new_database[key]
+                        new_database.pop(key,None)
+            print(new_database)
+            print("complete")
+            return new_database

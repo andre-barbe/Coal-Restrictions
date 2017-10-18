@@ -26,7 +26,6 @@ Cumulative Change in Emissions by Source (million MT)
 	U.S. Gas	27	62	108	177	300
 	Non-U.S.	-1	-2	-2	-3	-4
 	Total World	-173	-357	-551	-750	-930
-	Total World	-173	-357	-551	-750	-930
 
 Change in Total U.S. Emissions (percent)	-3	-6	-10	-13	-17
 
@@ -35,13 +34,11 @@ Change in Total U.S. Emissions (percent)	-3	-6	-10	-13	-17
 Table 4: Change in Welfare from Restricting Coal Consumption
 	Coal Intensity Reduction Policy (percent)
 	10	20	30	40	50
-Change in Welfare (billion USD)
-Millions	U.S.	-1,306	-5,599	-15,347	-36,597	-89,861
+Change in Welfare (million USD)
+U.S.	-1,306	-5,599	-15,347	-36,597	-89,861
 Non_U.S.	249	943	2,450	5,684	13,778
-	Non-U.S.	0.2	0.9	2.4	5.7	13.8
-	Total World	-1.1	-4.7	-12.9	-30.9	-76.1
 Total World	-1,057	-4,657	-12,897	-30,913	-76,083
 
 Ratio of Change in Welfare, Non-U.S. / U.S.	-0.19	-0.17	-0.16	-0.16	-0.15
 
-Marginal U.S. Welfare Cost (USD per MT CO2)	15	35	73	166	678
+Marginal U.S. Welfare Cost (USD per MT)	15	35	73	166	678

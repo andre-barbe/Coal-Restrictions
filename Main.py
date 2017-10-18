@@ -4,6 +4,7 @@ from CreateCMF import *
 from CreateMAP import *
 from ImportCSV import *
 from PostEstimation import *
+from PostEstimationZZZZ import *
 from Tables import *
 import subprocess
 
@@ -31,6 +32,12 @@ CreateMAP("coal").create()
     #Also note that some drives may be access through either method
 
 c=ImportCSV("coal",simulation_list).create()
-d=PostEstimation(c).create()
+c2=ImportCSV("coal",simulation_list).create()
+d=PostEstimationZZZZ(c).create()
+d2=PostEstimation(c2).create()
+d1_only=sorted(set(d.items())-set(d2.items()))
+d2_only=sorted(set(d2.items())-set(d.items()))
+print(d1_only)
+print(d2_only)
 TablesAndGraphs("coal",d).create()
 #The problem was that the final variable only has 1 matrix, so it is a little different from the previous ones
