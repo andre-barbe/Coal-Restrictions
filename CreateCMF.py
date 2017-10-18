@@ -1,55 +1,58 @@
 __author__ = "Andre Barbe"
 __project__ = "Coal Restrictions"
 __created__ = "2017-10-6"
-__altered__ = "2017-10-6"  
+__altered__ = "2017-10-18"
+
 
 class CreateCMF(object):
     """Creates the CMF File"""
-    
+
     __slots__ = ["file"]
 
     def __init__(self, file: str) -> None:
         self.file = file
 
     def create(self) -> None:
-        
-        #Create important lines that you need to worry about
-        method_list_j=["Method = Johansen;\n",
-                       "Steps = 1;\n",
-                       "automatic accuracy = no;\n",
-                       "subintervals = 1;\n"]
+        # Create important lines that you need to worry about
+        method_list_j = ["Method = Johansen;\n",
+                         "Steps = 1;\n",
+                         "automatic accuracy = no;\n",
+                         "subintervals = 1;\n"]
 
-        method_list_g=["Method = Gragg;",
-                        "Steps = 6 12 18;",
-                        "automatic accuracy = yes;",
-                        "accuracy figures = 4;",
-                        "accuracy percent = 80;",
-                        "minimum subinterval length =  1.0E-0003;",
-                        "minimum subinterval fails = stop;",
-                        "accuracy criterion = Data;",
-                        "subintervals = 6;"]
+        method_list_g = ["Method = Gragg;",
+                         "Steps = 6 12 18;",
+                         "automatic accuracy = yes;",
+                         "accuracy figures = 4;",
+                         "accuracy percent = 80;",
+                         "minimum subinterval length =  1.0E-0003;",
+                         "minimum subinterval fails = stop;",
+                         "accuracy criterion = Data;",
+                         "subintervals = 6;"]
 
-        method_list=method_list_g
+        method_list = method_list_g
 
-        #Create unimportant lines and combine them with important lines
-        line_list = [   "! This Command file\n",
-                        "! c:\\rungtap5\\andreb\work\coaltest.cmf\n", # Double \\ are required to escape the special character(s)
-                        "! was written by RunGTAP (Version 3.61 built 19/Oct/2013)\n",
-                        "! This is the default CMFSTART file which RunGTAP uses when\n",
-                        "! a version has no CMFSTART file of its own\n",
-                        "iz1 = no ;\n",
-                        "NDS = yes; ! no displays\n",
-                        "Extrapolation accuracy file = YES ;\n",
-                        "CPU = yes;\n",
-                        "!@ end of CMFSTART part\n",
-                        "aux files = GTAP_Files\GTAP;\n",
-                        "file gtapSETS = GTAP_Files\sets.har;\n",
-                        "file gtapDATA = GTAP_Files\\basedata.har;\n", # Double \\ are required to escape the special character
-                        "Updated file gtapDATA = GTAP_Files\SaveSims\cresult<p1>.upd;\n",
-                        "Solution file = GTAP_Files\SaveSims\coal<p1>;\n",
-                        "file gtapPARM = GTAP_Files\default.prm;\n",
-                        "Verbal Description =\n",
-                        "<p1> pct reduction in coal intensity by electricity in US;\n"]+method_list+["! basic closure\n",
+        # Create unimportant lines and combine them with important lines
+        line_list = ["! This Command file\n",
+                     "! c:\\rungtap5\\andreb\work\coaltest.cmf\n",
+                     # Double \\ are required to escape the special character(s)
+                     "! was written by RunGTAP (Version 3.61 built 19/Oct/2013)\n",
+                     "! This is the default CMFSTART file which RunGTAP uses when\n",
+                     "! a version has no CMFSTART file of its own\n",
+                     "iz1 = no ;\n",
+                     "NDS = yes; ! no displays\n",
+                     "Extrapolation accuracy file = YES ;\n",
+                     "CPU = yes;\n",
+                     "!@ end of CMFSTART part\n",
+                     "aux files = GTAP_Files\GTAP;\n",
+                     "file gtapSETS = GTAP_Files\sets.har;\n",
+                     "file gtapDATA = GTAP_Files\\basedata.har;\n",
+                     # Double \\ are required to escape the special character
+                     "Updated file gtapDATA = GTAP_Files\SaveSims\cresult<p1>.upd;\n",
+                     "Solution file = GTAP_Files\SaveSims\coal<p1>;\n",
+                     "file gtapPARM = GTAP_Files\default.prm;\n",
+                     "Verbal Description =\n",
+                     "<p1> pct reduction in coal intensity by electricity in US;\n"] + method_list + [
+                        "! basic closure\n",
                         "exogenous\n",
                         "    afall\n",
                         "    afcom\n",
@@ -97,7 +100,7 @@ class CreateCMF(object):
                         "    pf_slack(NEF_COMM,NEP_COMM,US_REG)\n",
                         "    pf_slack(NEF_COMM,EGY_COMM,US_REG)\n",
                         "    pf_slack(EGY_COMM,NEP_COMM,US_REG)\n",
-                        "pf_slack(\"Coal\",\"Coal\",US_REG)\n", #\ is required to escape the quotes
+                        "pf_slack(\"Coal\",\"Coal\",US_REG)\n",  # \ is required to escape the quotes
                         "pf_slack(\"Coal\",\"Oil\",US_REG)\n",
                         "pf_slack(\"Coal\",\"Gas\",US_REG)\n",
                         "pf_slack(\"Coal\",\"Oil_pcts\",US_REG)\n",
@@ -131,8 +134,6 @@ class CreateCMF(object):
                         "Rest Endogenous ;\n",
                         "shock intf(\"Coal\",\"Electricity\",\"usa\") = -<p1>;\n"]
 
-        #Create final file
-        with open("Control_Files\{0}.cmf".format(self.file),"w+") as writer: #Create the empty file
-            writer.writelines(line_list) #write the line list to the file
-
-
+        # Create final file
+        with open("Control_Files\{0}.cmf".format(self.file), "w+") as writer:  # Create the empty file
+            writer.writelines(line_list)  # write the line list to the file
