@@ -1,18 +1,18 @@
  
- ! This file was created at 15:41:44 on 04-SEP-2012 by the program
- !  <shocks.for 29-JUL-2009> [shocks.tab,shocks.sti]
+ ! This file was created at 15:39:37 on 19-OCT-2017 by the program
+ !  <shocks.for 16-MAY-2013> [shocks.tab]
  ! which accesses some of the routines in the GEMPACK software release
- !  <GEMPACK  Release 10.0-001    April 2009>
+ !  <GEMPACK Release 11.2.001   May 2013>
  
  !     -------------------------------------------------------                
  !    !            GEMPACK Software System Licence            !               
  !    !  Source Code Licence for the GEMPACK Software System  !               
- !    !                 Licence No.  GFM-0048                 !               
- !    !          Licence for Release 11.0 of GEMPACK          !               
- !    !           Center for Global Trade Analysis            !               
- !    !         Department of Agricultural Economics          !               
- !    !                   Krannert Building                   !               
- !    !                   Purdue University                   !               
+ !    !                 Licence No.  GFM-0137                 !               
+ !    !          Licence for Release 11.4 of GEMPACK          !               
+ !    !          U.S. International Trade Commission          !               
+ !    !                     Washington DC                     !               
+ !    !                          USA                          !               
+ !    !    (Your GEMPACK licence expires on 30-APR-2018.)     !               
  !     -------------------------------------------------------                
     
  
@@ -29,58 +29,58 @@
  ! The matrix TGD_HAT(%1,%2) with %1 in TRAD_COMM and %2 in REG. +++++++++++++
  
  !%2= USA            EU27            EEFSU           JPN
-   0.0000000     -3.40464972E-02 -0.11180047       0.0000000     !%1=Agr
+ -1.79139469E-02  6.14722744E-02 -0.19526426       0.0000000     !%1=Agr
  !%2= RoA1           EEx             CHN             IND
-   0.0000000     -0.97835219       0.0000000       5.1125636
+  0.11049187      -1.0148779       0.0000000       17.085350
  !%2= ROW
- -5.29261213E-03
+ -6.62483647E-02
  
  !%2= USA            EU27            EEFSU           JPN
-   0.0000000     -1.09302970E-02 -7.50454888E-02   0.0000000     !%1=Coal
+   0.0000000      -7.0347681     -0.12877074       0.0000000     !%1=Coal
  !%2= RoA1           EEx             CHN             IND
-   0.0000000     -0.44893232       0.0000000      2.23090332E-02
+   0.0000000     -5.38796978E-03   0.0000000      3.50538529E-02
  !%2= ROW
-  -1.5672184
+  -3.5462689
  
  !%2= USA            EU27            EEFSU           JPN
-   0.0000000     -9.94526744E-02  -8.1252747       0.0000000     !%1=Oil
+   0.0000000      -5.4952002      -3.3893063       0.0000000     !%1=Oil
  !%2= RoA1           EEx             CHN             IND
-   0.0000000      0.16595800       0.0000000       0.0000000
+ -2.38418525E-05 -0.80065620       0.0000000       0.0000000
  !%2= ROW
- -9.53598544E-02
+  8.72597918E-02
  
  !%2= USA            EU27            EEFSU           JPN
-   0.0000000      0.70700485      -2.2739351       0.0000000     !%1=Gas
+   0.0000000      -8.6076269      -2.0733657       0.0000000     !%1=Gas
  !%2= RoA1           EEx             CHN             IND
-   0.0000000      -4.1324401       0.0000000      -18.872475
+ -1.90734499E-04  -4.5543766       0.0000000      -39.803818
  !%2= ROW
-  -7.4980068
+  -2.1052499
  
  !%2= USA            EU27            EEFSU           JPN
-   0.0000000      -3.9114308     -1.66984331E-02   0.0000000     !%1=Oil_pcts
+   0.0000000      -18.776083     -4.70854528E-03   0.0000000     !%1=Oil_pcts
  !%2= RoA1           EEx             CHN             IND
-   0.0000000     -1.54971829E-04   0.0000000      -14.616663
+   0.0000000     -2.22916412E-03   0.0000000      -37.328304
  !%2= ROW
-  -23.990427
+  -18.954344
  
  !%2= USA            EU27            EEFSU           JPN
-   0.0000000      -1.0744578      -1.6648016       0.0000000     !%1=Electricity
+   0.0000000      -5.8334465     -0.71192724       0.0000000     !%1=Electricity
  !%2= RoA1           EEx             CHN             IND
-   0.0000000     -0.17289972       0.0000000       10.841511
+ -1.19209271E-05  0.55632216       0.0000000       23.280056
  !%2= ROW
- -0.66607404
+  -1.9576772
  
  !%2= USA            EU27            EEFSU           JPN
-   0.0000000     -1.14439614E-03  -6.6416202      -4.7179484     !%1=En_Int_ind
+   0.0000000      -14.813895      -5.6753402      -4.7584510     !%1=En_Int_ind
  !%2= RoA1           EEx             CHN             IND
- -0.11602277      0.36649421       0.0000000      -7.5076656
+  -1.5763422      0.38912928       0.0000000      -13.650063
  !%2= ROW
- -0.50062776
+  -2.8603740
  
  !%2= USA            EU27            EEFSU           JPN
-   0.0000000      1.01327998E-04 -9.26350951E-02 -6.30577374E-03 !%1=Oth_ind_ser
+   0.0000000     -9.10525173E-02 -8.74350220E-02 -8.40354897E-03 !%1=Oth_ind_ser
  !%2= RoA1           EEx             CHN             IND
- -0.56775868     -3.97762321E-02  -1.8722925     -0.67901129
+ -0.54174030     -0.22471601      -1.3999070      -2.2545085
  !%2= ROW
- -0.23210885
+ -0.26343620
  

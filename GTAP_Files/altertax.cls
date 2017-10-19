@@ -14,11 +14,12 @@ Exogenous ! Part of closure for altertax runs
 !    and SAVESLACK exogenous for that one region (which can be any one).
 
 dtbalr("USA")
-dtbalr("EU")
+dtbalr("EU27")
 dtbalr("EEFSU")
 dtbalr("JPN")
 dtbalr("RoA1")
 dtbalr("EEx")
-dtbalr("CHIND")
-cgdslack("RoW");
+dtbalr("CHN")
+dtbalr("IND")
+cgdslack("ROW");
 Rest endogenous;

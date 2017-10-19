@@ -1,5 +1,5 @@
 #TMDATE
-at 15:18:41 on 20-MAR-2017              
+at 15:41:56 on 19-OCT-2017              
 #AVAIL
 y n y     0
 #LEV4
@@ -9,7 +9,7 @@ y n y     0
     3
 Numeraire shock                                                                
 [Solution method is gragg. Steps = 2,4,6. Automatic accuracy.]                 
-[CMF file: GTAP.cmf]                                                           
+[CMF file: gtap.cmf]                                                           
 #SETS
    50
     1 REG              9  k regions in the model

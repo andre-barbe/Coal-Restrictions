@@ -1,3 +1,8 @@
+__author__ = "Andre Barbe"
+__project__ = "Coal Restrictions"
+__created__ = "2017-10-5"
+__altered__ = "2017-10-19"
+
 from CreateSTIs import *
 from CreateBAT import *
 from CreateCMF import *
@@ -5,22 +10,19 @@ from CreateMAP import *
 from ImportCSV import *
 from PostEstimation import *
 from Tables import *
+from Cleanup import *
 import subprocess
 
-__author__ = "Andre Barbe"
-__project__ = "Coal Restrictions"
-__created__ = "2017-10-5"
-__altered__ = "2017-10-18"
-
 #Program Control Variables
-simulation_list_normal   = ['10', '20', '30', '40', '50']
-simulation_list_marginal = ['11', '21', '31', '41', '51']
+simulation_list_normal   = ['10', '20', '30', '40']
+simulation_list_marginal = ['11', '21', '31', '41']
 project_name="coal"
-run_GEMSIM=False
-solution_method="default_j"
+run_GEMSIM=True
+solution_method="default_g"
 
 #Call methods
 simulation_list = simulation_list_normal+simulation_list_marginal
+Cleanup(project_name, simulation_list).main()
 CreateBAT(project_name, simulation_list).create()
 CreateSTIs(project_name,simulation_list).create()
 CreateCMF(project_name,solution_method).create()

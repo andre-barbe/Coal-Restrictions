@@ -1,44 +1,44 @@
 Table 1: Changes in U.S. Coal Trade (Percent)
 	Coal Intensity Reduction Policy (percent)
-	10	20	30	40	50
-Production	-9	-18	-28	-40	-53
-Imports	-7	-14	-22	-30	-40
-Exports	3	8	14	23	39
+	10	20	30	40
+Production	-8	-17	-28	-44
+Imports	-5	-10	-17	-26
+Exports	3	7	14	29
 
 
 
 Table 2: Changes in Non-U.S. Coal Trade (Percent)
 	Coal Intensity Reduction Policy (percent)
-	10	20	30	40	50
-Production	-1	-2	-4	-6	-9
-Imports	2	4	7	12	21
-Exports	-3	-6	-9	-15	-22
+	10	20	30	40
+Production	-1	-2	-5	-9
+Imports	2	4	8	17
+Exports	-3	-6	-12	-22
 
 
 
 Table 3: Change in Carbon Emissions and Coal Exports from Restricting Coal Consumption
 	Coal Intensity Reduction Policy (percent)
-	10	20	30	40	50
+	10	20	30	40
 Cumulative Change in Emissions by Source (million MT)
-	U.S.	-172	-355	-548	-746	-926
-	U.S. Coal	-204	-427	-676	-958	-1,294
-	U.S. Oil	0	0	0	0	0
-	U.S. Gas	27	62	108	177	300
-	Non-U.S.	-1	-2	-2	-3	-4
-	Total World	-173	-357	-551	-750	-930
+	U.S.	-117	-236	-344	-364
+	U.S. Coal	-181	-396	-667	-1,061
+	U.S. Oil	0	0	0	0
+	U.S. Gas	60	148	298	634
+	Non-U.S.	-1	-3	-6	-13
+	Total World	-119	-239	-350	-377
 
-Change in Total U.S. Emissions (percent)	-3	-6	-10	-13	-17
+Change in Total U.S. Emissions (percent)	-2	-5	-7	-7
 
 
 
 Table 4: Change in Welfare from Restricting Coal Consumption
 	Coal Intensity Reduction Policy (percent)
-	10	20	30	40	50
+	10	20	30	40
 Change in Welfare (million USD)
-U.S.	-1,306	-5,599	-15,347	-36,597	-89,861
-Non_U.S.	249	943	2,450	5,684	13,778
-Total World	-1,057	-4,657	-12,897	-30,913	-76,083
+U.S.	-2,801	-13,419	-43,221	-146,342
+Non_U.S.	895	3,891	12,033	39,745
+Total World	-1,906	-9,528	-31,188	-106,597
 
-Ratio of Change in Welfare, Non-U.S. / U.S.	-0.19	-0.17	-0.16	-0.16	-0.15
+Ratio of Change in Welfare, Non-U.S. / U.S.	-0.32	-0.29	-0.28	-0.27
 
-Marginal U.S. Welfare Cost (USD per MT)	15	35	73	166	678
+Marginal U.S. Welfare Cost (USD per MT)	51	151	571	-1,597
