@@ -18,11 +18,12 @@ simulation_list_normal   = ['10', '20', '30', '40']
 simulation_list_marginal = ['11', '21', '31', '41']
 project_name="coal"
 run_GEMSIM=True
+run_Cleanup=True
 solution_method="default_g"
 
 #Call methods
 simulation_list = simulation_list_normal+simulation_list_marginal
-Cleanup(project_name, simulation_list).main()
+if run_Cleanup: Cleanup(project_name, simulation_list).main()
 CreateBAT(project_name, simulation_list).create()
 CreateSTIs(project_name,simulation_list).create()
 CreateCMF(project_name,solution_method).create()

@@ -3,6 +3,7 @@ __project__ = "Coal Restrictions"
 __created__ = "2017-10-17"
 __altered__ = "2017-10-18"
 
+import numpy
 
 class PostEstimation(object):
     """Creates new variables and regions after estimation completes"""
@@ -30,7 +31,7 @@ class PostEstimation(object):
                 database_of_added = {}
 
                 for matrix in list(sorted(set([key[2] for key in array_database.keys()]))):
-                    if (matrix != "Levels" or array == "EV"):
+                    if matrix in ["PreLevel", "PostLevel", "Changes"] or array == "EV":
                         # Levels are percentages so you can't just add levels together to get aggregate levels
                         # But for EV, the levels actually are absolute values
 
@@ -76,8 +77,8 @@ class PostEstimation(object):
                                 key_non_us = (simulation, array, matrix, row, "NonUS")
 
                                 self.database[key_non_us] = self.database[key_total] - self.database[key_us]
-                                database_of_added[key_total] = sum_of_cols_in_row  # for creating levels
-                                matrix_database[key_non_us] = self.database[key_non_us]
+                                database_of_added[key_non_us] = self.database[key_total] - self.database[key_us]  # for creating levels
+                                matrix_database[key_non_us] = self.database[key_total] - self.database[key_us]
 
                         col_list = list(sorted(set([key[-1] for key in matrix_database.keys()])))
                         for col in col_list:
@@ -88,13 +89,22 @@ class PostEstimation(object):
                                 key_non_us = (simulation, array, matrix, "NonUS", col)
 
                                 self.database[key_non_us] = self.database[key_total] - self.database[key_us]
-                                database_of_added[key_total] = sum_of_cols_in_row  # for creating levels
-                                matrix_database[key_non_us] = self.database[key_non_us]
+                                database_of_added[key_non_us] = self.database[key_total] - self.database[key_us]  # for creating levels
+                                matrix_database[key_non_us] = self.database[key_total] - self.database[key_us]
 
                 if (array != "EV"):  # Now Create Levels variables. Note that this is at the array nest, not matrix
                     row_list = list(sorted(set([key[3] for key in database_of_added.keys()])))
                     for row in row_list:
                         col_list = list(sorted(set([key[-1] for key in database_of_added.keys()])))
                         for col in col_list:
-                            self.database[simulation, array, "Levels", row, col] = 100 * self.database[simulation, array, "Changes", row, col] /self.database[simulation, array, "PreLevel", row, col]
+                            #value = numpy.float64(100 * self.database[simulation, array, "Changes", row, col] /self.database[simulation, array, "PreLevel", row, col])
+                            changes=self.database[simulation, array, "Changes", row, col]
+                            prelevel=self.database[simulation, array, "PreLevel", row, col]
+                            linear_key=(simulation, array, "Linear", row, col)
+                            if linear_key in self.database:
+                               1==1
+                            elif changes == 1.00E+10 or prelevel==1.00E+10:
+                                self.database[linear_key] = 1.00E+10
+                            else:
+                                self.database[simulation, array, "Linear", row, col] = 100 * changes / prelevel
                             # Need to be careful here since it could overwrite eexisting levels
