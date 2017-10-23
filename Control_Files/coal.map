@@ -4,3 +4,5 @@ qo
 pm
 gco2
 ev
+intf(INSUBF_COMM,PROD_COMM,"USA")
+qf(FIRM_COMM,PROD_COMM,"USA")

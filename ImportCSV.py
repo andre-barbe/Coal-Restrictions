@@ -51,9 +51,11 @@ class ImportCSV(object):
                 # checks if line contains name of columns (and also matrix)
                 if name_array != []:
                     if line.split("(")[0] == " " + name_array:
-                        list_name_col = line.split(",")  # defines name of matrix
-                        name_matrix = line.split(")")[0].split(":")[-1].strip("\"")  # defines name of matrix
-                        do_not_store_this_line = 1
+                            # line defines name of matrix if its equal to array name followed by "("
+                        list_name_col = line.split(",")
+                        name_matrix = line.split(")")[0].split(":")[-1].strip("\"")
+                            # defines name of matrix equal to the entry before the first ")" then after the last ":"
+                        do_not_store_this_line = 1 #matrix name line doesn't contain usable values
 
                 # row name is just first entry of a line
                 name_row = line.split(",")[0].strip()

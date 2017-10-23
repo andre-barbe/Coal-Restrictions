@@ -19,7 +19,9 @@ class CreateMAP(object):
                      "qo\n",
                      "pm\n",
                      "gco2\n"
-                     "ev"  # this only has one matrix and so can sometime cause problems
+                     "ev\n",  # this only has one matrix and so can sometime cause problems
+                     """intf(INSUBF_COMM,PROD_COMM,"USA")\n"""
+                     """qf(FIRM_COMM,PROD_COMM,"USA")"""
                      ]
 
         # Create final file
