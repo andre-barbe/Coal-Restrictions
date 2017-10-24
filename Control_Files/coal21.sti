@@ -1,0 +1,13 @@
+bat         		! Run in batch.
+log		        ! Start a log file
+b		        	! Output to both terminal and log file
+Control_Files\sltoth_sti.log	    	! Name of log file
+ses
+,
+shl
+
+GTAP_Files\SaveSims\coal21.sl4
+c
+y
+Control_Files\coal.map
+Results\coal21.csv
