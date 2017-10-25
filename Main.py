@@ -16,13 +16,14 @@ import subprocess
 #Program Control Variables
 simulation_list_normal   = ['10', '20', '30', '40']
 simulation_list_marginal = ['11', '21', '31', '41']
+simulation_list_other = ['00']
 project_name="coal"
 run_GEMSIM=True
 run_Cleanup=True
 solution_method="default_g"
 
 #Call methods
-simulation_list = simulation_list_normal+simulation_list_marginal
+simulation_list = simulation_list_normal+simulation_list_marginal+simulation_list_other
 if run_Cleanup: Cleanup(project_name, simulation_list).main()
 CreateBAT(project_name, simulation_list).create()
 CreateSTIs(project_name,simulation_list).create()

@@ -1,5 +1,5 @@
  
- This GEMPACK log file was created at 17:04:44 on 23-OCT-2017 by the program
+ This GEMPACK log file was created at 17:59:06 on 24-OCT-2017 by the program
   <SLTOHT   Version 5.53  July 2013>
  which accesses some of the routines in the GEMPACK software release
   <GEMPACK Release 11.4.003   January 2016>
@@ -8,10 +8,10 @@
   (Processing command line options.)
  
  
-  (Opening Stored-input file 'Control_Files\coal41.sti')
+  (Opening Stored-input file 'Control_Files\coal00.sti')
  (Opened, as text, existing file
  
-  'C:\Users\andre.barbe\PycharmProjects\Coal-Restrictions\Control_Files\coal41.s
+  'C:\Users\andre.barbe\PycharmProjects\Coal-Restrictions\Control_Files\coal00.s
  ti'.)
  Taking inputs from a Stored-input file
  
@@ -132,13 +132,13 @@
    (The suffix '.sl4' will be appended automatically to your input.)
   
   
- GTAP_Files\SaveSims\coal41.sl4
+ GTAP_Files\SaveSims\coal00.sl4
  (Opened, as binary, existing file
   
   'C:\Users\andre.barbe\PycharmProjects\Coal-Restrictions\GTAP_Files\SaveSims\co
- al41.sl4'.)
+ al00.sl4'.)
   
-  !  This file was created at 17:02:18 on 23-OCT-2017 by the program
+  !  This file was created at 17:57:26 on 24-OCT-2017 by the program
   !    <GEMSIM v4.4 Jan 2016> [gtap.tab,GTAP.STI]
   !  which accesses some of the routines in the GEMPACK software release
   !    <GEMPACK Release 11.4.003   January 2016>
@@ -152,7 +152,7 @@
   What follows is a verbal description of the old experiment.
   
   
- 41 pct reduction in coal intensity by electricity in US
+ 00 pct reduction in coal intensity by electricity in US
  [Solution method is gragg. Steps = 6,12,18. Automatic accuracy.]
  [CMF file: Control_Files\coal.cmf]
   
@@ -216,14 +216,14 @@
   --------------------------------
   
   Input the full name (INCLUDING suffix) of this file.
-    Enter a CARRIAGE-RETURN to use the name    'GTAP_Files\SaveSims\coal41.csv'.
+    Enter a CARRIAGE-RETURN to use the name    'GTAP_Files\SaveSims\coal00.csv'.
   
   
- Results\coal41.csv
+ Results\coal00.csv
  (Opened new text file
-   'C:\Users\andre.barbe\PycharmProjects\Coal-Restrictions\Results\coal41.csv'.)
+   'C:\Users\andre.barbe\PycharmProjects\Coal-Restrictions\Results\coal00.csv'.)
  (Writing ONLY CUMULATIVE TOTALS solution to file
-   'C:\Users\andre.barbe\PycharmProjects\Coal-Restrictions\Results\coal41.csv'.)
+   'C:\Users\andre.barbe\PycharmProjects\Coal-Restrictions\Results\coal00.csv'.)
   
   ---------------------------------------------------
      Variable      !     Array  Size      ! Undefined
@@ -238,10 +238,10 @@
    intf            !  14x9x1x4            !      0
    qf              !  18x9x1x4            !      0
  (New Text file is
-   'C:\Users\andre.barbe\PycharmProjects\Coal-Restrictions\Results\coal41.csv'.)
+   'C:\Users\andre.barbe\PycharmProjects\Coal-Restrictions\Results\coal00.csv'.)
   
   (The program has completed without error.)
   Total elapsed time is: less than one second.
   
   
-  This run ended at 17:04:44 on 23-OCT-2017
+  This run ended at 17:59:06 on 24-OCT-2017
