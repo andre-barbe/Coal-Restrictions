@@ -5,6 +5,7 @@ __altered__ = "2017-10-18"
 
 import numpy
 
+
 class PostEstimation(object):
     """Creates new variables and regions after estimation completes"""
 
@@ -77,7 +78,8 @@ class PostEstimation(object):
                                 key_non_us = (simulation, array, matrix, row, "NonUS")
 
                                 self.database[key_non_us] = self.database[key_total] - self.database[key_us]
-                                database_of_added[key_non_us] = self.database[key_total] - self.database[key_us]  # for creating levels
+                                database_of_added[key_non_us] = self.database[key_total] - self.database[
+                                    key_us]  # for creating levels
                                 matrix_database[key_non_us] = self.database[key_total] - self.database[key_us]
 
                         col_list = list(sorted(set([key[-1] for key in matrix_database.keys()])))
@@ -89,7 +91,8 @@ class PostEstimation(object):
                                 key_non_us = (simulation, array, matrix, "NonUS", col)
 
                                 self.database[key_non_us] = self.database[key_total] - self.database[key_us]
-                                database_of_added[key_non_us] = self.database[key_total] - self.database[key_us]  # for creating levels
+                                database_of_added[key_non_us] = self.database[key_total] - self.database[
+                                    key_us]  # for creating levels
                                 matrix_database[key_non_us] = self.database[key_total] - self.database[key_us]
 
                 if (array != "EV"):  # Now Create Levels variables. Note that this is at the array nest, not matrix
@@ -97,13 +100,13 @@ class PostEstimation(object):
                     for row in row_list:
                         col_list = list(sorted(set([key[-1] for key in database_of_added.keys()])))
                         for col in col_list:
-                            #value = numpy.float64(100 * self.database[simulation, array, "Changes", row, col] /self.database[simulation, array, "PreLevel", row, col])
-                            changes=self.database[simulation, array, "Changes", row, col]
-                            prelevel=self.database[simulation, array, "PreLevel", row, col]
-                            linear_key=(simulation, array, "Linear", row, col)
+                            # value = numpy.float64(100 * self.database[simulation, array, "Changes", row, col] /self.database[simulation, array, "PreLevel", row, col])
+                            changes = self.database[simulation, array, "Changes", row, col]
+                            prelevel = self.database[simulation, array, "PreLevel", row, col]
+                            linear_key = (simulation, array, "Linear", row, col)
                             if linear_key in self.database:
-                               1==1
-                            elif changes == 1.00E+10 or prelevel==1.00E+10:
+                                1 == 1
+                            elif changes == 1.00E+10 or prelevel == 1.00E+10:
                                 self.database[linear_key] = 1.00E+10
                             else:
                                 self.database[simulation, array, "Linear", row, col] = 100 * changes / prelevel

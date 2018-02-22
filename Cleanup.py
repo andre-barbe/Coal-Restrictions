@@ -5,6 +5,7 @@ __altered__ = "2017-10-19"
 
 import os
 
+
 class Cleanup(object):
     """Deletes intermediate work files"""
 
@@ -19,7 +20,3 @@ class Cleanup(object):
         [os.remove(os.path.join("Results", f)) for f in os.listdir("Results") if f.endswith(".csv")]
         [os.remove(os.path.join("GTAP_Files\SaveSims", f)) for f in os.listdir("GTAP_Files\SaveSims")]
         [os.remove(os.path.join("Final", f)) for f in os.listdir("Final")]
-
-
-
-

@@ -7,12 +7,12 @@ __altered__ = "2017-10-18"
 class ExportTables(object):
     """Creates Tables and Graphs from cleaned data"""
 
-    __slots__ = ["file", "database","simulations_normal","simulations_marginal"]
+    __slots__ = ["file", "database", "simulations_normal", "simulations_marginal"]
 
-    def __init__(self, file: str, database: dict,simulations_normal: list, simulations_marginal: list) -> None:
+    def __init__(self, file: str, database: dict, simulations_normal: list, simulations_marginal: list) -> None:
         self.file = file
         self.database = database
-        self.simulations_normal= simulations_normal
+        self.simulations_normal = simulations_normal
         self.simulations_marginal = simulations_marginal
 
     def create_variable_line(self, row_label, array, matrix, row, column, simulation_list) -> str:
@@ -93,17 +93,22 @@ class ExportTables(object):
         line_list = ["Table 1: Changes in U.S. Electricity Generation (Percent) from Restricting Coal Consumption\n",
                      "\tCoal Intensity Reduction Policy (percent)\n",
                      "\t" + "\t".join(self.simulations_normal) + "\n",
-                     self.create_variable_line("Unit Demand for Coal", "intf", "Linear", "coal", "Electricity", self.simulations_normal),
-                     self.create_variable_line("Unit Demand for Noncoal", "intf", "Linear", "ncoal", "Electricity", self.simulations_normal),
-                     self.create_variable_line("Unit Demand for Non-elec energy", "intf", "Linear", "nely", "Electricity",
+                     self.create_variable_line("Unit Demand for Coal", "intf", "Linear", "coal", "Electricity",
                                                self.simulations_normal),
-                     self.create_variable_line("Unit Demand for Energy Subproduct", "intf", "Linear", "eny", "Electricity",
+                     self.create_variable_line("Unit Demand for Noncoal", "intf", "Linear", "ncoal", "Electricity",
+                                               self.simulations_normal),
+                     self.create_variable_line("Unit Demand for Non-elec energy", "intf", "Linear", "nely",
+                                               "Electricity",
+                                               self.simulations_normal),
+                     self.create_variable_line("Unit Demand for Energy Subproduct", "intf", "Linear", "eny",
+                                               "Electricity",
                                                self.simulations_normal),
                      self.create_variable_line("Unit Demand for K-Energy Subproduct", "intf", "Linear", "ken",
                                                "Electricity", self.simulations_normal),
                      self.create_variable_line("Unit Demand for Gas in noncoal", "intf", "Linear", "gas", "Electricity",
                                                self.simulations_normal),
-                     self.create_variable_line("Electricity Generation", "qo", "Linear", "Electricity", "USA", self.simulations_normal),
+                     self.create_variable_line("Electricity Generation", "qo", "Linear", "Electricity", "USA",
+                                               self.simulations_normal),
                      self.create_variable_line("Demand for Gas for Generation", "qf", "Linear", "Gas", "Electricity",
                                                self.simulations_normal),
                      self.create_variable_line("Demand for Gas for Generation", "qf", "Linear", "Coal", "Electricity",
@@ -112,27 +117,31 @@ class ExportTables(object):
                      "\n",
                      "\n",
 
-
-                    "Table 2: Changes in U.S. Coal Trade (Percent)\n",
+                     "Table 2: Changes in U.S. Coal Trade (Percent)\n",
                      "\tCoal Intensity Reduction Policy (percent)\n",
                      "\t" + "\t".join(self.simulations_normal) + "\n",
-                     self.create_variable_line("U.S. Production", "qo", "Linear", "Coal", "USA", self.simulations_normal),
+                     self.create_variable_line("U.S. Production", "qo", "Linear", "Coal", "USA",
+                                               self.simulations_normal),
                      self.create_variable_line("U.S. Imports", "qiw", "Linear", "Coal", "USA", self.simulations_normal),
                      self.create_variable_line("U.S. Exports", "qxw", "Linear", "Coal", "USA", self.simulations_normal),
-                     self.create_variable_line("World Production", "qo", "Linear", "Coal", "Total", self.simulations_normal),
+                     self.create_variable_line("World Production", "qo", "Linear", "Coal", "Total",
+                                               self.simulations_normal),
                      "\n",
                      "\n",
                      "\n",
-
 
                      "Table 3: Change in Carbon Emissions and Coal Exports from Restricting Coal Consumption\n",
                      "\tCoal Intensity Reduction Policy (percent)\n",
                      "\t" + "\t".join(self.simulations_normal) + "\n",
                      "Cumulative Change in Emissions by Source (million MT)\n",
-                     "\t" + self.create_variable_line("U.S. Total", "gco2", "Changes", "USA", "Total", self.simulations_normal),
-                     "\t" + self.create_variable_line("U.S. Coal", "gco2", "Changes", "USA", "coal", self.simulations_normal),
-                     "\t" + self.create_variable_line("U.S. Oil", "gco2", "Changes", "USA", "oil", self.simulations_normal),
-                     "\t" + self.create_variable_line("U.S. Gas", "gco2", "Changes", "USA", "gas", self.simulations_normal),
+                     "\t" + self.create_variable_line("U.S. Total", "gco2", "Changes", "USA", "Total",
+                                                      self.simulations_normal),
+                     "\t" + self.create_variable_line("U.S. Coal", "gco2", "Changes", "USA", "coal",
+                                                      self.simulations_normal),
+                     "\t" + self.create_variable_line("U.S. Oil", "gco2", "Changes", "USA", "oil",
+                                                      self.simulations_normal),
+                     "\t" + self.create_variable_line("U.S. Gas", "gco2", "Changes", "USA", "gas",
+                                                      self.simulations_normal),
                      "\t" + self.create_variable_line("Non-U.S.", "gco2", "Changes", "NonUS", "Total",
                                                       self.simulations_normal),
                      "\t" + self.create_variable_line("Total World", "gco2", "Changes", "Total", "Total",
@@ -150,7 +159,8 @@ class ExportTables(object):
                      "Change in Welfare (million USD)\n",
                      self.create_variable_line("U.S.", "EV", "Lin+Lev", "USA", "Linear", self.simulations_normal),
                      self.create_variable_line("Non_U.S.", "EV", "Lin+Lev", "NonUS", "Linear", self.simulations_normal),
-                     self.create_variable_line("Total World", "EV", "Lin+Lev", "Total", "Linear", self.simulations_normal),
+                     self.create_variable_line("Total World", "EV", "Lin+Lev", "Total", "Linear",
+                                               self.simulations_normal),
                      "\n",
                      line_ratio_change_welfare_nonus_us,
                      "\n",

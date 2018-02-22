@@ -13,10 +13,9 @@ class CreateSTIs(object):
         self.project = project
         self.simulation_list = simulation_list
 
-
     def create(self) -> None:
         for simulation in self.simulation_list:
-            file_name=self.project+simulation
+            file_name = self.project + simulation
             # Create important lines that you need to worry about
             sl4_location_line = "GTAP_Files\SaveSims\{0}.sl4\n".format(file_name)
             csv_location_line = "Results\{0}.csv".format(file_name)
