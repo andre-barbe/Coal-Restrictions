@@ -301,8 +301,19 @@ Set
     EGY_COMM # energy commodities # (coal, oil, gas, oil_pcts, electricity);
 Subset
     EGY_COMM is subset of TRAD_COMM;
-!End added by Andre Barbe!
 
+!<
+    Non-US Region
+    -----------------
+>!
+
+Set USREG (USA);
+Subset USREG is subset of REG;
+
+Set nonUSREG = REG - USREG;
+Subset nonUSREG is subset of REG;
+
+!End added by Andre Barbe!
 
 !<
     Emissions Trading
@@ -5522,6 +5533,7 @@ Equation VAENFPRICE # price of value-added-energy subproduct #
         = sum(k,VAEN_FCOMM, FSHVAEN(k,j,r) * [qf(k,j,r) + pf(k,j,r)])
         - qf("vaen",j,r);
 !Replacement of commented out equations ends here!
+
 
 
 !<
